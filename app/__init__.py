@@ -1,8 +1,11 @@
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, session
 from flask_cors import CORS
+import os
 
 def create_app():
     app = Flask(__name__)
+
+    app.secret_key = os.getenv('SECRET_KEY')
     
     CORS(app)
 
