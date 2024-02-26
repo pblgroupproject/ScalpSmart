@@ -2,9 +2,8 @@ from flask import Flask, Blueprint, send_from_directory
 
 main_bp = Blueprint('main', __name__)
 
-@main_bp.route('/')
-def index():
-    return 'Hello World'
+from .WebApp.routes import web_bp
+main_bp.register_blueprint(web_bp)
 
 @main_bp.route('/keep-alive')
 def keep_alive():
