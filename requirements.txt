@@ -3,3 +3,4 @@ Flask-Cors==3.0.10
 roboflow==1.1.16
 ultralytics==8.1.2
 gunicorn==20.1.0
+python-dotenv==1.0.1
