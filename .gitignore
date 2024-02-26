@@ -6,7 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
-uploaded_image.png
+uploads/
+flask_session/
 
 # Distribution / packaging
 .Python
