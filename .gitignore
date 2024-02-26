@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+uploaded_image.png
+
 # Distribution / packaging
 .Python
 env/
