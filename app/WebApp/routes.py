@@ -1,4 +1,4 @@
-from flask import Blueprint, session, redirect, render_template, request, url_for, jsonify
+from flask import Blueprint, session, redirect, render_template, request, url_for, jsonify, flash
 import json
 
 web_bp = Blueprint('web', __name__)
@@ -11,8 +11,14 @@ web_bp.register_blueprint(user_bp, url_prefix='/user')
 
 
 @web_bp.before_app_request
-def check_access():
-    if request.endpoint == 'main.web.update_session' and request.method == 'POST':
+def check_access():    
+    if request.method == 'POST':
+        return
+
+    if request.path.startswith('/static') or request.path.startswith('/keep-alive') or request.path.startswith('/flutter-app') or request.path.startswith('/update_session'):
+        return
+    
+    if request.path.startswith('/api'):
         return
 
     if "user_id" not in session and request.endpoint != 'main.web.login':
@@ -32,24 +38,24 @@ def check_access():
 @web_bp.route('/login')
 def login():
     if "user_id" not in session or "user_type" not in session:
-        return render_template('authentication.html')
-        # user_id = "1234"
-        # user_type = "doctor"
-        # session["user_id"] = user_id
-        # session["user_type"] = user_type
-        # return redirect(url_for('main.web.home'))
+        return render_template('Authentication/authentication.html')
     else: return redirect(url_for('main.web.home'))
     
-
-
-@web_bp.route('/update_session', methods=['POST'])
+@web_bp.route('/update_session', methods=['POST', 'GET'])
 def update_session():
+    if(request.method == 'GET'):
+        return 'Only POST Method Allowed'
+    
     data = request.json
+    print('Data')
+    print(data)
     user_id = data.get('user_id')
     user_type = data.get('user_type')
     session['user_id'] = user_id
     session['user_type'] = user_type
-    return jsonify({"message":"User session updated successfully"}), 200
+    return jsonify({"message":"User session updated successfully", "data": data}), 200
+
+
 
 @web_bp.route('/')
 def home():
@@ -59,7 +65,8 @@ def home():
 def logout():
     session.pop('user_id', None)
     session.pop('user_type', None)
-    return "Logged out Successfully"
+    flash("Logged out successfully!")
+    return redirect(url_for('main.web.home'))
 
 @web_bp.route('/access_denied')
 def access_denied():

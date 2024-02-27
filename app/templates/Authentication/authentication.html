@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalp Smart</title>
+</head>
+<body>
+    This is an authentication page
+    <form id="authForm">
+        <label for="user_id">user_id</label>
+        <input type="text" placeholder="user_id" id="user_id" name="user_id">
+        <label for="user-type">user_type</label>
+        <input type="text" name="user-type" placeholder="user_type" id="user_type">
+        <button type="submit">Submit</button>
+    </form>
+    
+
+    <script src="{{url_for('static', filename='js/Authentication/authentication.js')}}"></script>
+</body>
+</html>

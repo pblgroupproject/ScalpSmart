@@ -1,9 +1,9 @@
 from app import create_app
-from dotenv import load_dotenv
+from dotenv import main
 from flask import session
 import os
 
-load_dotenv('.env')
+main.load_dotenv()
 
 # To load environment variables, use os.getenv('KEY')
 
