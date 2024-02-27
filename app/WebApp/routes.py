@@ -1,4 +1,5 @@
 from flask import Blueprint, session, redirect, render_template, request, url_for, jsonify
+import json
 
 web_bp = Blueprint('web', __name__)
 
@@ -14,10 +15,10 @@ def check_access():
     if request.endpoint == 'main.web.update_session' and request.method == 'POST':
         return
 
-    elif "user_id" not in session and request.endpoint != 'main.web.login':
+    if "user_id" not in session and request.endpoint != 'main.web.login':
         return redirect(url_for('main.web.login'))
     
-    elif "user_type" not in session and request.endpoint != 'main.web.login':
+    if "user_type" not in session and request.endpoint != 'main.web.login':
         return redirect(url_for('main.web.login'))
 
     user_type = session.get('user_type')
@@ -41,18 +42,15 @@ def login():
     
 
 
-@web_bp.route('/update_session', method=['POST'])
+@web_bp.route('/update_session', methods=['POST'])
 def update_session():
-    try:
-        data = request.json
-        user_id = data.get('user_id')
-        user_type = data.get('user_type')
-        session['user_id'] = user_id
-        session['user_type'] = user_type
-        return jsonify({"message":"User session updated successfully"}),200
-    except Exception as e:
-        return jsonify({'error', str(e)}), 400
-    
+    data = request.json
+    user_id = data.get('user_id')
+    user_type = data.get('user_type')
+    session['user_id'] = user_id
+    session['user_type'] = user_type
+    return jsonify({"message":"User session updated successfully"}), 200
+
 @web_bp.route('/')
 def home():
     return f"Welcome User_if {session['user_id']} & {session['user_type']}"

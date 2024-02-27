@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, send_from_directory
+from flask import Flask, Blueprint, send_from_directory, redirect
 
 main_bp = Blueprint('main', __name__)
 
@@ -11,4 +11,5 @@ def keep_alive():
 
 @main_bp.route('/flutter-app')
 def downloadApp():
-    return send_from_directory('./flutterApp','scalp_smart.apk')
+    applink = 'https://drive.google.com/file/d/1Ta43SYLyt-AgBSlzTNKv_WMA22AKuDOS/view'
+    return redirect(applink)
