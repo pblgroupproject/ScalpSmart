@@ -4,18 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scalp Smart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/Authentication/authentication.css')}}">
 </head>
 <body>
-    This is an authentication page
-    <form id="authForm">
+    <!-- This is an authentication page -->
+    <div class="root">
+        <div id="root">
+        
+        </div>
+    
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Instructions</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>If you want to be a registered doctor on <strong>Scalp Smart</strong> send us an email at <code>pblgroupproject@gmail.com</code> and provide the following details</p>
+                    <ul>
+                        <li><strong>Degree certificate</strong></li>
+                        <li><strong>Qualification</strong></li>
+                        <li><strong>Experience</strong></li>
+                        <li><strong>Location of clinic</strong></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                  <a class="btn btn-secondary" target="_blank" href="mailto:pblgroupproject@gmail.com?subject=Doctor%20Onboarding%20Request&body=Hello%20Team%20Scalp%20Smart%2C%0D%0ABelow%20are%20my%20details%3A%0D%0A%0D%0AFull%20Name%20%3A%20%3CEnter%20Name%20Here%3E%0D%0A%0D%0AQualification%20%3A%20%3CEnter%20Qualification%20Details%3E%0D%0A%0D%0AExperience%3A%20%3CEnter%20Experence%20Details%3E%0D%0A%0D%0ALocation%3A%20%3CEnter%20Location%20of%20Clinics%3E%0D%0A%0D%0AAttachment%20about%20the%20Qualification%20and%20Identity%20Proof%20sent.%20%3Cattach%20doccuments%3E">Send Mail</a>
+                </div>
+              </div>
+            </div>
+        </div>
+            
+    </div>
+
+
+    <!-- <form id="authForm">
         <label for="user_id">user_id</label>
         <input type="text" placeholder="user_id" id="user_id" name="user_id">
         <label for="user-type">user_type</label>
         <input type="text" name="user-type" placeholder="user_type" id="user_type">
         <button type="submit">Submit</button>
-    </form>
+    </form> -->
     
+    <script src="{{url_for('static', filename='js/Authentication/authentication.js')}}" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <script src="{{url_for('static', filename='js/Authentication/authentication.js')}}"></script>
 </body>
 </html>
