@@ -13,6 +13,8 @@ app = create_app()
 
 # Set ENVIRONMENT = False in Production mode and ENVIRONMENT = True in Development Mode
 
+# Set TEST = False in Production mode and TEST = True in Development Mode
+
 if __name__ == '__main__':    
     isDevelopment = os.getenv('ENVIRONMENT')
     print(isDevelopment)
