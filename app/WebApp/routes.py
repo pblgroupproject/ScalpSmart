@@ -1,5 +1,5 @@
 from flask import Blueprint, session, redirect, render_template, request, url_for, jsonify, flash
-import json
+import os
 
 web_bp = Blueprint('web', __name__)
 
@@ -74,9 +74,19 @@ def delete_session():
 
 @web_bp.route('/')
 def home():
-    user_id = session['user_id']
-    user_type = session['user_type']
-    return render_template('home.html', user_id=user_id, user_type=user_type)
+    if os.getenv('TEST') == 'True':
+        user_id = session['user_id']
+        user_type = session['user_type']
+        return render_template('home.html', user_id=user_id, user_type=user_type)
+    else:
+        if session['user_type']=='user':
+            return redirect(url_for('main.web.user.home'))
+        elif session['user_type']=='doctor':
+            return redirect(url_for('main.web.doc.home'))
+        elif session['user_type']=='admin':
+            return redirect(url_for('main.web.admin.home'))
+        else:
+            return render_template('home.html')
 
 @web_bp.route('/logout')
 def logout():
