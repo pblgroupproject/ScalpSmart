@@ -83,11 +83,11 @@ const loginWindow = `
             <form id="loginForm">
                 <div class="mb-3">
                     <label for="loginEmail" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="loginEmail" autocomplete="off">
+                    <input type="email" class="form-control" id="loginEmail" name="email" autocomplete="off">
                 </div>
                 <div class="mb-3">
                     <label for="loginPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="loginPassword" autocomplete="off">
+                    <input type="password" class="form-control" id="loginPassword" name="password" autocomplete="off">
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
                 <button id="proceedToSignUp" class="btn btn-secondary">Click Here to Sign Up</button>                
@@ -179,6 +179,52 @@ document.getElementById('root').addEventListener('click', function(e){
 document.getElementById('root').addEventListener('submit', function(e){
     if(e.target && e.target.id == 'loginForm') {
         e.preventDefault();
+        const loginForm = e.target;
+        const email = loginForm.email.value;
+        const password = loginForm.password.value;
+        signInWithEmailAndPassword(auth,email,password)
+            .then((cred) => {
+                console.log("User Created : ", cred.user);
+                console.log("User ID", cred.user.uid);
+
+                // Query to get user_type from Firebase
+
+                let sessionJSON = {
+                    "user_id": cred.user.uid,
+                    "user_type": "user"
+                }
+
+                loginForm.reset();
+
+                return fetch('/update_session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(sessionJSON)
+                });
+            })
+            .then(response => {
+                if(response.ok){
+                    return response.json();
+                }
+                else{
+                    console.log("Failed to update user session")
+                    throw new Error('Failed to update user session');
+                }
+            })
+            .then(data => {
+                console.log("Response from server:");
+                console.log(data);
+                alert("Logged In Successfully!");
+                location.reload();
+            })
+            .catch(err => {
+                console.log(`Error Code : ${err.code}`);
+                console.log(`Error Message : ${err.message}`);
+                alert(`Error Message : ${err.message}`)
+                loginForm.reset();
+            })
     }
 });
 
@@ -224,7 +270,7 @@ document.getElementById('root').addEventListener('submit', function(e){
             .then(data => {
                 console.log("Response from server:");
                 console.log(data);
-                alert("Logged In Successfully!");
+                alert("Sign Up Successful!");
                 location.reload();
             })
             .catch(err => {
