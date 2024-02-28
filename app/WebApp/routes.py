@@ -15,7 +15,7 @@ def check_access():
     if request.method == 'POST':
         return
 
-    if request.path.startswith('/static') or request.path.startswith('/keep-alive') or request.path.startswith('/flutter-app') or request.path.startswith('/update_session'):
+    if request.path.startswith('/static') or request.path.startswith('/keep-alive') or request.path.startswith('/flutter-app') or request.path.startswith('/update_session') or request.path.startswith('/delete_session'):
         return
     
     if request.path.startswith('/api'):
@@ -56,6 +56,14 @@ def update_session():
     return jsonify({"message":"User session updated successfully", "data": data}), 200
 
 
+@web_bp.route('/delete_session', methods=['GET'])
+def delete_session():
+    try:
+        session.pop('user_id', None)
+        session.pop('user_type', None)
+        return jsonify({"message":"User session deleted successfully"}), 200
+    except:
+        return jsonify({"error": "Something went wrong"}), 500
 
 @web_bp.route('/')
 def home():
@@ -63,10 +71,7 @@ def home():
 
 @web_bp.route('/logout')
 def logout():
-    session.pop('user_id', None)
-    session.pop('user_type', None)
-    flash("Logged out successfully!")
-    return redirect(url_for('main.web.home'))
+    return render_template('Authentication/logout.html')
 
 @web_bp.route('/access_denied')
 def access_denied():
