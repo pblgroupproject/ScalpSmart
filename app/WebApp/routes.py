@@ -9,6 +9,10 @@ web_bp.register_blueprint(doc_bp, url_prefix='/doctor')
 from .User.routes import user_bp
 web_bp.register_blueprint(user_bp, url_prefix='/user')
 
+from .Admin.routes import admin_bp
+web_bp.register_blueprint(admin_bp, url_prefix='/admin')
+
+
 
 @web_bp.before_app_request
 def check_access():    
@@ -29,10 +33,13 @@ def check_access():
 
     user_type = session.get('user_type')
 
-    if user_type == 'user' and request.path.startswith('/doctor'):
+    if user_type == 'user' and (request.path.startswith('/doctor') or request.path.startswith('/admin')):
         return redirect(url_for('main.web.access_denied'))
 
-    elif user_type == 'doctor' and request.path.startswith('/user'):
+    elif user_type == 'doctor' and (request.path.startswith('/user') or request.path.startswith('/admin')):
+        return redirect(url_for('main.web.access_denied'))
+    
+    elif user_type == 'admin' and (request.path.startswith('/user') or request.path.startswith('/doctor')):
         return redirect(url_for('main.web.access_denied'))
 
 @web_bp.route('/login')
