@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalp Smart</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+</head>
+<body>
+    <h1>Scalp Smart</h1>
+    <p>This page is made for testing purposes only. If you landed here accidentally, please <a href="/logout">log out</a> and re sign in</p>
+
+
+    {% if user_id and user_type %}
+        <p>User Id : {{user_id}} </p>
+        <p>User type: {{user_type}}</p>
+    {% endif %}
+
+    <script src="{{url_for('static', filename='js/home.js')}}" type="module"></script>    
+</body>
+</html>

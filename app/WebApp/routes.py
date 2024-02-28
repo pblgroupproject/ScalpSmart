@@ -67,7 +67,9 @@ def delete_session():
 
 @web_bp.route('/')
 def home():
-    return f"Welcome User_if {session['user_id']} & {session['user_type']}"
+    user_id = session['user_id']
+    user_type = session['user_type']
+    return render_template('home.html', user_id=user_id, user_type=user_type)
 
 @web_bp.route('/logout')
 def logout():
