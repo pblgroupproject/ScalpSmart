@@ -91,3 +91,7 @@ def about(person=None):
         return render_template('User/user_aboutus.html', IMAGE_URL=IMAGE_URL, NAME=NAME, DESCRIPTION=DESCRIPTION, LINKEDIN=LINKEDIN, GITHUB=GITHUB, INSTAGRAM=INSTAGRAM)
 
     return redirect(url_for('main.web.user.home', _anchor='about_us'))
+
+@user_bp.route('/info')
+def info():
+    return render_template('User/user_info.html')
