@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Scalp</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/User/user_aboutus.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light p-2" style="display: grid; grid-template-columns: 1fr 1fr;">
+        <div><a class="navbar-brand" href="#" id="navbar-brand">Scalp Smart</a></div>
+        <div class="navbar-toggler d-md-none border-0" style="display: flex; justify-content: end;">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: end;">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" aria-current="page" href="/user/home">
+                  Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="display: inline-block;" href="/user/about">
+                  About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/user/info">
+                  Info
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/user/marketplace">
+                  Market Place
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/user/self-test">
+                  Self-Test
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/user/chat">
+                  Chat
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/logout">
+                  Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+  </nav>
+
+
+  <div class="backgroundGradient"></div>
+
+  <div class="containerGrid">
+      <div class="imageHolderDiv">
+          <div class="personCard" style="background-image: url('{{ IMAGE_URL }}');">
+          </div>
+      </div>
+      <div class="textCardDiv">
+          <header>
+              <div>{{ NAME }}</div>
+          </header>
+          <div class="mobile" style="text-align: center; font-size: 2rem; padding: 5px; font-weight: 700;">
+              {{ NAME}}
+          </div>
+          <div class="textbox">
+                {{ DESCRIPTION | safe }}
+          </div>
+          <div class="linkDiv">
+              <div>
+                  <a href="{{ LINKEDIN }}" class="btn">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z" fill="#333333"/>
+                      </svg>
+                  </a>
+              </div>
+              <div>
+                  <a href="{{ GITHUB }}" class="btn">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2C10.6868 2 9.38642 2.25866 8.17317 2.7612C6.95991 3.26375 5.85752 4.00035 4.92893 4.92893C3.05357 6.8043 2 9.34784 2 12C2 16.42 4.87 20.17 8.84 21.5C9.34 21.58 9.5 21.27 9.5 21V19.31C6.73 19.91 6.14 17.97 6.14 17.97C5.68 16.81 5.03 16.5 5.03 16.5C4.12 15.88 5.1 15.9 5.1 15.9C6.1 15.97 6.63 16.93 6.63 16.93C7.5 18.45 8.97 18 9.54 17.76C9.63 17.11 9.89 16.67 10.17 16.42C7.95 16.17 5.62 15.31 5.62 11.5C5.62 10.39 6 9.5 6.65 8.79C6.55 8.54 6.2 7.5 6.75 6.15C6.75 6.15 7.59 5.88 9.5 7.17C10.29 6.95 11.15 6.84 12 6.84C12.85 6.84 13.71 6.95 14.5 7.17C16.41 5.88 17.25 6.15 17.25 6.15C17.8 7.5 17.45 8.54 17.35 8.79C18 9.5 18.38 10.39 18.38 11.5C18.38 15.32 16.04 16.16 13.81 16.41C14.17 16.72 14.5 17.33 14.5 18.26V21C14.5 21.27 14.66 21.59 15.17 21.5C19.14 20.16 22 16.42 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7362 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2Z" fill="#333333"/>
+                      </svg>
+                          
+                  </a>
+              </div>
+              <div>
+                  <a href="{{ INSTAGRAM }}" class="btn">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.028 2C14.153 2.003 14.724 2.009 15.217 2.023L15.411 2.03C15.635 2.038 15.856 2.048 16.123 2.06C17.187 2.11 17.913 2.278 18.55 2.525C19.21 2.779 19.766 3.123 20.322 3.678C20.8305 4.1779 21.224 4.78259 21.475 5.45C21.722 6.087 21.89 6.813 21.94 7.878C21.952 8.144 21.962 8.365 21.97 8.59L21.976 8.784C21.991 9.276 21.997 9.847 21.999 10.972L22 11.718V13.028C22.0025 13.7574 21.9948 14.4868 21.977 15.216L21.971 15.41C21.963 15.635 21.953 15.856 21.941 16.122C21.891 17.187 21.721 17.912 21.475 18.55C21.2247 19.2178 20.8311 19.8226 20.322 20.322C19.822 20.8303 19.2173 21.2238 18.55 21.475C17.913 21.722 17.187 21.89 16.123 21.94C15.8857 21.9512 15.6484 21.9612 15.411 21.97L15.217 21.976C14.724 21.99 14.153 21.997 13.028 21.999L12.282 22H10.973C10.2433 22.0025 9.51355 21.9948 8.78403 21.977L8.59003 21.971C8.35264 21.962 8.1153 21.9517 7.87803 21.94C6.81403 21.89 6.08803 21.722 5.45003 21.475C4.7827 21.2244 4.17824 20.8308 3.67903 20.322C3.17007 19.8223 2.77625 19.2176 2.52503 18.55C2.27803 17.913 2.11003 17.187 2.06003 16.122C2.04889 15.8847 2.03889 15.6474 2.03003 15.41L2.02503 15.216C2.0066 14.4868 1.99827 13.7574 2.00003 13.028V10.972C1.99724 10.2426 2.00457 9.5132 2.02203 8.784L2.02903 8.59C2.03703 8.365 2.04703 8.144 2.05903 7.878C2.10903 6.813 2.27703 6.088 2.52403 5.45C2.77514 4.7819 3.16975 4.17702 3.68003 3.678C4.17912 3.16947 4.78317 2.77599 5.45003 2.525C6.08803 2.278 6.81303 2.11 7.87803 2.06C8.14403 2.048 8.36603 2.038 8.59003 2.03L8.78403 2.024C9.51322 2.00623 10.2426 1.99857 10.972 2.001L13.028 2ZM12 7C10.6739 7 9.40218 7.52678 8.46449 8.46447C7.52681 9.40215 7.00003 10.6739 7.00003 12C7.00003 13.3261 7.52681 14.5979 8.46449 15.5355C9.40218 16.4732 10.6739 17 12 17C13.3261 17 14.5979 16.4732 15.5356 15.5355C16.4732 14.5979 17 13.3261 17 12C17 10.6739 16.4732 9.40215 15.5356 8.46447C14.5979 7.52678 13.3261 7 12 7ZM12 9C12.394 8.99993 12.7841 9.07747 13.1481 9.22817C13.5121 9.37887 13.8429 9.5998 14.1215 9.87833C14.4001 10.1569 14.6211 10.4875 14.772 10.8515C14.9228 11.2154 15.0005 11.6055 15.0005 11.9995C15.0006 12.3935 14.9231 12.7836 14.7724 13.1476C14.6217 13.5116 14.4007 13.8423 14.1222 14.121C13.8437 14.3996 13.513 14.6206 13.149 14.7714C12.7851 14.9223 12.395 14.9999 12.001 15C11.2054 15 10.4423 14.6839 9.87971 14.1213C9.3171 13.5587 9.00103 12.7956 9.00103 12C9.00103 11.2044 9.3171 10.4413 9.87971 9.87868C10.4423 9.31607 11.2054 9 12.001 9M17.251 5.5C16.9195 5.5 16.6016 5.6317 16.3671 5.86612C16.1327 6.10054 16.001 6.41848 16.001 6.75C16.001 7.08152 16.1327 7.39946 16.3671 7.63388C16.6016 7.8683 16.9195 8 17.251 8C17.5825 8 17.9005 7.8683 18.1349 7.63388C18.3693 7.39946 18.501 7.08152 18.501 6.75C18.501 6.41848 18.3693 6.10054 18.1349 5.86612C17.9005 5.6317 17.5825 5.5 17.251 5.5Z" fill="#333333"/>
+                      </svg>
+                          
+                  </a>
+              </div>
+          
+          </div>
+      </div>
+  </div>
+
+  <footer>
+      <p>Provided to you by Scalp Smart</p>
+      <p>@2024 PBL Group Project</p>
+  </footer>
+
+
+    <script src="{{url_for('static', filename='js/User/user_aboutus.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

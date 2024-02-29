@@ -401,6 +401,40 @@ footer p:last-child{
 }
 
 
+.appContainer{
+    /* border: 1px solid black; */
+    width: 50%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 50vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.appContainer>div{
+    /* border: 1px solid black; */
+}
+
+.appContainer .appImageText{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+}
+
+.appContainer .appImageDownload{
+    background-image: url('https://media.istockphoto.com/id/911329146/vector/smartphone-with-download-button-on-screen-vector-icon.jpg?s=612x612&w=0&k=20&c=YjQnMQ5Gntdy7Foew2XnVc2_fIRMicc6VBG_q7uaU-M=');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+    mix-blend-mode: multiply;
+}
+
+.appContainer .appImageDownload:hover{
+    background-size: 105%;
+}
+
 @media (max-width: 1300px) {    
 .selfTestContainer .overlayImage{
     left: -40%;
@@ -523,6 +557,23 @@ footer p:last-child{
     width: 70%;
     height: 90%;
 }
+
+.appContainer{
+
+    width: 50%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 50vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.appContainer>div:last-child{
+    display: none;
+}
+
+
 footer{
     padding-block: 10px;
     text-align: center;

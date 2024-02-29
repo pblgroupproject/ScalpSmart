@@ -56,19 +56,19 @@ document.addEventListener("DOMContentLoaded", function() {
             let destination = '';
             switch (id) {
                 case 'tirthraj':
-                    destination = 'user/about/tirthraj';
+                    destination = 'about/tirthraj';
                     break;
                 case 'advait':
-                    destination = 'user/about/advait';
+                    destination = 'about/advait';
                     break;
                 case 'amey':
-                    destination = 'user/about/amey';
+                    destination = 'about/amey';
                     break;
                 case 'rinit':
-                    destination = 'user/about/rinit';
+                    destination = 'about/rinit';
                     break;
                 case 'suvrat':
-                    destination = 'user/about/rinit';
+                    destination = 'about/suvrat';
                     break;
                 default:
                     break;
@@ -79,4 +79,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+document.getElementById('appImageDownload').addEventListener('click',function(){
+    window.location.href = '/flutter-app';
+})
 
