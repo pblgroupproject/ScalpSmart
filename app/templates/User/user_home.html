@@ -8,7 +8,285 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/User/user_home.css')}}">
 </head>
 <body>
-    User Home
+
+    <div id="messageDiv" class="btn"></div>
+
+    <nav class="navbar navbar-expand-lg bg-light p-2" style="display: grid; grid-template-columns: 1fr 1fr;">
+          <div><a class="navbar-brand" href="#" id="navbar-brand">Scalp Smart</a></div>
+          <div class="navbar-toggler d-md-none border-0" style="display: flex; justify-content: end;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: end;">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" style="display: inline-block;" aria-current="page" href="/user/home">
+                    Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="#about_us">
+                    About Us
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/user/info">
+                    Info
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/user/marketplace">
+                    Market Place
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/user/self-test">
+                    Self-Test
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/user/chat">
+                    Chat
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/logout">
+                    Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+    </nav>
+    <div>
+    <div id="carouselSection" class="mt-2">
+        <div id="carouselExampleCaptions" class="carousel slide" style="position: absolute;">
+            <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+            <div class="carousel-item active" id="ytvideo1">
+                <img src="https://i.ytimg.com/vi/-Mj-gWLN-L4/maxresdefault.jpg" class="d-block m-auto w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <a href="https://www.youtube.com/watch?v=-Mj-gWLN-L4" style="text-decoration:none; color: inherit;" target="_blank">
+                    <h5>Going Bald? This Could Be Why...</h5>
+                    <p style="font-size: 1.1rem; padding: 5px;">The most common cause of balding in men is androgenetic alopecia, also known as male pattern hair loss. It is essentially a genetic condition although there are many myths about its cause. This video is a deep dive into what causes men to go bald.</p>
+                </a>
+            </div>
+            </div>
+            <div class="carousel-item" id="ytvideo2">
+                <img src="https://i.ytimg.com/vi/SB2mJLwDjfg/maxresdefault.jpg" class="d-block m-auto w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <a href="https://www.youtube.com/watch?v=SB2mJLwDjfg" style="text-decoration:none; color: inherit;" target="_blank">
+                    <h5>Hair Loss Treatments For Men</h5>
+                    <p style="font-size: 1.1rem; padding: 5px;">There is a lot of confusion about which hair loss treatments for men actually work, and which ones are bogus. So let's clear up the confusion by taking a comprehensive look into the scientifically backed treatment for men who are going bald.</p>
+                </a>
+            </div>
+            </div>
+            <div class="carousel-item" id="ytvideo3">
+                <img src="https://i.ytimg.com/vi/Sc3pkZzZcfo/maxresdefault.jpg" class="d-block m-auto w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <a href="https://www.youtube.com/watch?v=Sc3pkZzZcfo" style="text-decoration:none; color: inherit;" target="_blank">
+                    <h5>The Early Signs Of Balding</h5>
+                    <p style="font-size: 1.1rem; padding: 5px;">This video provides an informative overview of hair loss, discussing its various types, causes, symptoms, and treatments. It covers common conditions such as male and female pattern baldness, alopecia areata, and telogen effluvium, as well as less common causes and associated skin conditions.</p>
+                </a>
+                </div>
+            </div>
+            <div class="carousel-item" id="ytvideo4">
+                <img src="https://i.ytimg.com/vi/004UHWXWD8Y/maxresdefault.jpg" class="d-block m-auto w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <a href="https://www.youtube.com/watch?v=004UHWXWD8Y" style="text-decoration:none; color: inherit;" target="_blank">
+                    <h5>Natural Hair Growth Cycle</h5>
+                    <p style="font-size: 1.1rem; padding: 5px;">This video delves into the science behind hair growth cycles and common reasons for hair loss. It explains the phases of the hair growth cycle - Anagen, Catagen, and Telogen - and how disruptions in this cycle can lead to hair fall and thinning. Additionally, it discusses various types of hair loss such as androgenetic alopecia, alopecia areata, traction alopecia, anagen effluvium, and telogen effluvium, shedding light on their causes and progression.</p>
+                </a>
+                </div>
+            </div>
+            </div>
+            <button class="carousel-control-prev" id="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" id="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    </div>
+
+    <div class="selfTestContainer">
+        <div class="bgImage">
+            <img src="https://ia.acs.org.au/content/dam/ia/article/images/face%20scanner.jpg" alt="">
+            <div class="overlayImage">
+                <h3>Take A Self Test</h3>
+                <div id="overlayText">
+                    Our state-of-the-art Machine Learning Model is trained on vast datasets of facial images to ensure that our system delivers consistent results across diverse demographics and ethnicities.
+                    <br><br>
+                    By analyzing key indicators, our model can accurately classify individuals into different stages of baldness, ranging from  minimal hair loss to advanced balding.
+                </div>
+                <div id="overlayTextForMobile">
+                    Our state-of-the-art Machine Learning Model is trained on vast datasets of facial images to ensure that our system delivers consistent results across diverse demographics and ethnicities.
+                </div>
+                <button class="btn" id="proceedToSelfTextBtn"> Take Test </button>
+            </div>
+        </div>
+    </div>
+    
+
+    <h2 class="text-center" style="font-family: 'Poppins', sans-serif;">Our Services</h2>
+    <div class="serviceContainer">
+        <div>
+            <div class="card">
+                <div class="iconDiv">
+                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M101.25 90C99.5796 90.0076 97.9324 90.3922 96.4312 91.125L80.3063 75H67.5V82.5H77.1975L91.1287 96.4313C90.3955 97.9324 90.0097 99.5794 90 101.25C90 103.475 90.6598 105.65 91.896 107.5C93.1321 109.35 94.8891 110.792 96.9448 111.644C99.0005 112.495 101.262 112.718 103.445 112.284C105.627 111.85 107.632 110.778 109.205 109.205C110.778 107.632 111.85 105.627 112.284 103.445C112.718 101.262 112.495 99.0005 111.644 96.9448C110.792 94.8892 109.35 93.1321 107.5 91.896C105.65 90.6598 103.475 90 101.25 90ZM101.25 105C100.508 105 99.7833 104.78 99.1666 104.368C98.5499 103.956 98.0693 103.37 97.7854 102.685C97.5016 102 97.4274 101.246 97.5721 100.518C97.7167 99.791 98.0739 99.1228 98.5983 98.5984C99.1228 98.0739 99.791 97.7168 100.518 97.5721C101.246 97.4274 102 97.5016 102.685 97.7855C103.37 98.0693 103.956 98.5499 104.368 99.1666C104.78 99.7833 105 100.508 105 101.25C105 102.245 104.605 103.198 103.902 103.902C103.198 104.605 102.245 105 101.25 105ZM101.25 48.75C98.9309 48.7569 96.6707 49.4815 94.78 50.8244C92.8892 52.1673 91.4605 54.0626 90.69 56.25H67.5V63.75H90.69C91.3808 65.6894 92.5915 67.4016 94.1896 68.6995C95.7877 69.9974 97.7118 70.8311 99.7517 71.1094C101.792 71.3877 103.869 71.1 105.756 70.2776C107.644 69.4553 109.269 68.13 110.454 66.4466C111.639 64.7631 112.339 62.7863 112.476 60.7321C112.614 58.678 112.184 56.6255 111.234 54.799C110.284 52.9725 108.851 51.4422 107.09 50.3754C105.329 49.3086 103.309 48.7463 101.25 48.75ZM101.25 63.75C100.508 63.75 99.7833 63.5301 99.1666 63.118C98.5499 62.706 98.0693 62.1203 97.7854 61.4351C97.5016 60.7498 97.4274 59.9958 97.5721 59.2684C97.7167 58.541 98.0739 57.8728 98.5983 57.3484C99.1228 56.8239 99.791 56.4668 100.518 56.3221C101.246 56.1774 102 56.2516 102.685 56.5355C103.37 56.8193 103.956 57.2999 104.368 57.9166C104.78 58.5333 105 59.2583 105 60C105 60.9946 104.605 61.9484 103.902 62.6517C103.198 63.3549 102.245 63.75 101.25 63.75ZM101.25 7.5C98.2672 7.50298 95.4075 8.6892 93.2983 10.7983C91.1892 12.9075 90.003 15.7672 90 18.75C90.0128 20.5465 90.4606 22.3131 91.305 23.8988L77.235 37.5H67.5V45H80.265L96.765 29.055C98.2977 29.7234 99.9602 30.0416 101.631 29.9864C103.303 29.9312 104.941 29.504 106.426 28.736C107.911 27.968 109.207 26.8784 110.218 25.5466C111.229 24.2148 111.93 22.6743 112.271 21.0372C112.611 19.4002 112.583 17.7077 112.187 16.0832C111.791 14.4586 111.037 12.9428 109.982 11.646C108.926 10.3493 107.595 9.30425 106.084 8.58704C104.574 7.86983 102.922 7.49847 101.25 7.5ZM101.25 22.5C100.508 22.5 99.7833 22.2801 99.1666 21.868C98.5499 21.456 98.0693 20.8703 97.7854 20.1851C97.5016 19.4998 97.4274 18.7458 97.5721 18.0184C97.7167 17.291 98.0739 16.6228 98.5983 16.0984C99.1228 15.5739 99.791 15.2168 100.518 15.0721C101.246 14.9274 102 15.0016 102.685 15.2855C103.37 15.5693 103.956 16.0499 104.368 16.6666C104.78 17.2833 105 18.0083 105 18.75C105 19.7446 104.605 20.6984 103.902 21.4017C103.198 22.1049 102.245 22.5 101.25 22.5Z" fill="#F3C3A2"/>
+                        <path d="M67.5 22.5H75V15H67.5C65.3629 15.0071 63.2524 15.4736 61.3114 16.3678C59.3704 17.2619 57.6442 18.5629 56.25 20.1825C54.8558 18.5629 53.1296 17.2619 51.1886 16.3678C49.2476 15.4736 47.1371 15.0071 45 15H41.25C32.302 15.0099 23.7233 18.5689 17.3961 24.8961C11.0689 31.2233 7.50993 39.802 7.5 48.75V71.25C7.50993 80.198 11.0689 88.7767 17.3961 95.1039C23.7233 101.431 32.302 104.99 41.25 105H45C47.1371 104.993 49.2476 104.526 51.1886 103.632C53.1296 102.738 54.8558 101.437 56.25 99.8175C57.6442 101.437 59.3704 102.738 61.3114 103.632C63.2524 104.526 65.3629 104.993 67.5 105H75V97.5H67.5C65.5115 97.498 63.605 96.7072 62.1989 95.3011C60.7928 93.895 60.002 91.9885 60 90V30C60.002 28.0115 60.7928 26.105 62.1989 24.6989C63.605 23.2928 65.5115 22.502 67.5 22.5ZM45 97.5H41.25C34.9442 97.4887 28.8528 95.2095 24.0884 91.0785C19.3241 86.9476 16.2047 81.2406 15.3 75H22.5V67.5H15V52.5H26.25C29.2328 52.497 32.0925 51.3108 34.2017 49.2017C36.3108 47.0925 37.497 44.2328 37.5 41.25V33.75H30V41.25C30 42.2446 29.6049 43.1984 28.9016 43.9016C28.1984 44.6049 27.2446 45 26.25 45H15.3C16.2047 38.7594 19.3241 33.0524 24.0884 28.9215C28.8528 24.7905 34.9442 22.5113 41.25 22.5H45C46.9885 22.502 48.895 23.2928 50.3011 24.6989C51.7072 26.105 52.498 28.0115 52.5 30V45H45V52.5H52.5V67.5H45C42.0172 67.503 39.1575 68.6892 37.0483 70.7983C34.9392 72.9075 33.753 75.7672 33.75 78.75V86.25H41.25V78.75C41.25 77.7554 41.6451 76.8016 42.3484 76.0983C43.0516 75.3951 44.0054 75 45 75H52.5V90C52.498 91.9885 51.7072 93.895 50.3011 95.3011C48.895 96.7072 46.9885 97.498 45 97.5Z" fill="#F3C3A2"/>
+                    </svg>
+                </div>
+                <div style="position: relative;">
+                    <h2 style="font-family: 'Poppins', sans-serif; position: absolute; top: 50%; transform: translateY(-50%); left:10px; font-weight: 400;">ML Model</h2>
+                </div>
+                <div id="cardText" style="font-family: 'Poppins', sans-serif; padding-left: 10px;">
+                    Our proprietary ML model, enhanced with various computer vision algorithms, empowers Scalp Smart to precisely assess the stage of baldness, providing users with personalized insights into their hair health journey.
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="iconDiv">
+                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M74.2 81.3001C89.3 84.1501 100 91.4501 100 100V110H20V100C20 91.4501 30.7 84.1501 45.8 81.3001L60 105L74.2 81.3001ZM40 40.0001H80V50.0001C80 55.3044 77.8929 60.3915 74.1421 64.1422C70.3914 67.8929 65.3043 70.0001 60 70.0001C54.6957 70.0001 49.6086 67.8929 45.8579 64.1422C42.1071 60.3915 40 55.3044 40 50.0001V40.0001ZM40 35.0001L42.05 14.5001C42.1744 13.2624 42.7556 12.1156 43.6801 11.2835C44.6047 10.4514 45.8062 9.99383 47.05 10.0001H73C75.55 10.0001 77.7 11.9501 77.95 14.5001L80 35.0001H40ZM60 15.0001H55V20.0001H50V25.0001H55V30.0001H60V25.0001H65V20.0001H60V15.0001Z" fill="#F3C3A2"/>
+                    </svg>
+                        
+                </div>
+                <div style="position: relative;">
+                    <h2 style="font-family: 'Poppins', sans-serif; position: absolute; top: 50%; transform: translateY(-50%); left:10px; font-weight: 400;">Consult Doctors</h2>
+                </div>
+                <div id="cardText" style="font-family: 'Poppins', sans-serif; padding-left: 10px;">
+                    Our dedicated Doctor Consultation platform facilitates direct communication with experienced professionals, enabling users to seek tailored guidance and support for their specific hair care needs and concerns.
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="iconDiv">
+                    <svg style="scale: 0.9;" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M72 16H64V0H56V16H48C35.2696 16 23.0606 21.0571 14.0589 30.0589C5.05713 39.0606 0 51.2696 0 64C0 76.7304 5.05713 88.9394 14.0589 97.9411C23.0606 106.943 35.2696 112 48 112H72C73.04 112 74.08 111.968 75.112 111.896L107.032 119.88C107.702 120.047 108.403 120.037 109.068 119.853C109.733 119.668 110.339 119.315 110.827 118.827C111.315 118.339 111.668 117.733 111.853 117.068C112.037 116.403 112.047 115.702 111.88 115.032L107.264 96.56C113.593 89.7047 117.787 81.1535 119.332 71.9524C120.878 62.7512 119.709 53.2991 115.968 44.752C112.226 36.2049 106.075 28.9335 98.2663 23.8271C90.4577 18.7208 81.3301 16.0008 72 16ZM40 52C40 46.6957 42.1071 41.6086 45.8579 37.8579C49.6086 34.1071 54.6957 32 60 32C65.3043 32 70.3914 34.1071 74.1421 37.8579C77.8929 41.6086 80 46.6957 80 52C80 57.3043 77.8929 62.3914 74.1421 66.1421C70.3914 69.8929 65.3043 72 60 72C54.6957 72 49.6086 69.8929 45.8579 66.1421C42.1071 62.3914 40 57.3043 40 52ZM60 96C51.8176 96.0122 43.8769 93.2261 37.496 88.104L42.504 81.864C47.296 85.704 53.376 88 60 88C66.624 88 72.704 85.704 77.496 81.864L82.504 88.104C76.123 93.2261 68.1824 96.0122 60 96Z" fill="#F3C3A2"/>
+                    </svg>                        
+                </div>
+                <div style="position: relative;">
+                    <h2 style="font-family: 'Poppins', sans-serif; position: absolute; top: 50%; transform: translateY(-50%); left:10px; font-weight: 400;">Chat Bot</h2>
+                </div>
+                <div id="cardText" style="font-family: 'Poppins', sans-serif; padding-left: 10px;">
+                    With our intelligent Scalp Smart chatbot, users can seamlessly address queries ranging from product recommendations to expert advice on hair fall and baldness concerns, ensuring a responsive and informative user experience.
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="iconDiv">
+                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1575 15C22.2125 15 21.37 15.655 21.045 16.64L15.275 34.1675C15.0928 34.7218 15 35.3015 15 35.885V42.8575C15 46.8 17.8775 50 21.4275 50C24.9775 50 27.8575 46.8 27.8575 42.8575C27.8575 46.8025 30.735 50 34.285 50C37.835 50 40.715 46.8 40.715 42.8575C40.715 46.8025 43.5925 50 47.1425 50C50.6925 50 53.5675 46.805 53.5725 42.8625C53.5725 46.805 56.45 50 60 50C63.55 50 66.4275 46.8 66.4275 42.8575C66.4275 46.8025 69.3075 50 72.8575 50C76.4075 50 79.2825 46.805 79.285 42.8625C79.2875 46.805 82.165 50 85.715 50C89.265 50 92.1425 46.8 92.1425 42.8575C92.1425 46.8025 95.02 50 98.5725 50C102.123 50 105 46.8 105 42.8575V35.885C105 35.3015 104.907 34.7218 104.725 34.1675L98.955 16.6425C98.63 15.655 97.7875 15 96.8425 15H23.1575Z" fill="#F3C3A2"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M25 53.075V72.5H18.75C18.4185 72.5 18.1005 72.6317 17.8661 72.8661C17.6317 73.1005 17.5 73.4185 17.5 73.75V76.25C17.5 76.5815 17.6317 76.8995 17.8661 77.1339C18.1005 77.3683 18.4185 77.5 18.75 77.5H101.25C101.582 77.5 101.899 77.3683 102.134 77.1339C102.368 76.8995 102.5 76.5815 102.5 76.25V73.75C102.5 73.4185 102.368 73.1005 102.134 72.8661C101.899 72.6317 101.582 72.5 101.25 72.5H95V53.075C93.9535 52.6579 92.9868 52.0634 92.1425 51.3175C91.4944 51.8891 90.7741 52.3732 90 52.7575V72.5H30V52.7575C29.2259 52.3732 28.5056 51.8891 27.8575 51.3175C27.0175 52.055 26.0575 52.655 25 53.075ZM90 48.1825C90.2125 47.97 90.4125 47.7425 90.6 47.5H90V48.1825ZM93.685 47.5C94.063 47.9897 94.5053 48.4261 95 48.7975V47.5H93.685ZM25 48.7975C25.4972 48.429 25.9399 47.9922 26.315 47.5H25V48.7975ZM29.4 47.5H30V48.1825C29.7853 47.9684 29.5848 47.7404 29.4 47.5ZM21.25 82.5C20.9185 82.5 20.6005 82.6317 20.3661 82.8661C20.1317 83.1005 20 83.4185 20 83.75V102.5C20 103.163 20.2634 103.799 20.7322 104.268C21.2011 104.737 21.837 105 22.5 105H97.5C98.163 105 98.7989 104.737 99.2678 104.268C99.7366 103.799 100 103.163 100 102.5V83.75C100 83.4185 99.8683 83.1005 99.6339 82.8661C99.3995 82.6317 99.0815 82.5 98.75 82.5H21.25Z" fill="#F3C3A2"/>
+                        <path d="M35 66.25C35 65.9185 35.1317 65.6005 35.3661 65.3661C35.6005 65.1317 35.9185 65 36.25 65H43.75C44.0815 65 44.3995 65.1317 44.6339 65.3661C44.8683 65.6005 45 65.9185 45 66.25V71.25C45 71.5815 44.8683 71.8995 44.6339 72.1339C44.3995 72.3683 44.0815 72.5 43.75 72.5H36.25C35.9185 72.5 35.6005 72.3683 35.3661 72.1339C35.1317 71.8995 35 71.5815 35 71.25V66.25Z" fill="#F3C3A2"/>
+                        <path d="M40 68.75C40 68.4185 40.1317 68.1005 40.3661 67.8661C40.6005 67.6317 40.9185 67.5 41.25 67.5H48.75C49.0815 67.5 49.3995 67.6317 49.6339 67.8661C49.8683 68.1005 50 68.4185 50 68.75V71.25C50 71.5815 49.8683 71.8995 49.6339 72.1339C49.3995 72.3683 49.0815 72.5 48.75 72.5H41.25C40.9185 72.5 40.6005 72.3683 40.3661 72.1339C40.1317 71.8995 40 71.5815 40 71.25V68.75ZM60 68.75C60 69.7446 59.6049 70.6984 58.9016 71.4016C58.1984 72.1049 57.2446 72.5 56.25 72.5C55.2554 72.5 54.3016 72.1049 53.5984 71.4016C52.8951 70.6984 52.5 69.7446 52.5 68.75C52.5 67.7554 52.8951 66.8016 53.5984 66.0984C54.3016 65.3951 55.2554 65 56.25 65C57.2446 65 58.1984 65.3951 58.9016 66.0984C59.6049 66.8016 60 67.7554 60 68.75Z" fill="#F3C3A2"/>
+                    </svg>
+                        
+                </div>
+                <div style="position: relative;">
+                    <h2 style="font-family: 'Poppins', sans-serif; position: absolute; top: 50%; transform: translateY(-50%); left:10px; font-weight: 400;">Market Place</h2>
+                </div>
+                <div id="cardText" style="font-family: 'Poppins', sans-serif; padding-left: 10px;">
+                    Explore our comprehensive Marketplace, thoughtfully curated with products categorized by baldness stage and diverse preferences, offering a convenient shopping experience tailored to individual hair care requirements
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="iconDiv">
+                    <svg style="scale:0.9" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M65 45H55V35H65M65 85H55V55H65M60 10C53.4339 10 46.9321 11.2933 40.8658 13.806C34.7995 16.3188 29.2876 20.0017 24.6447 24.6447C15.2678 34.0215 10 46.7392 10 60C10 73.2608 15.2678 85.9785 24.6447 95.3553C29.2876 99.9983 34.7995 103.681 40.8658 106.194C46.9321 108.707 53.4339 110 60 110C73.2608 110 85.9785 104.732 95.3553 95.3553C104.732 85.9785 110 73.2608 110 60C110 53.4339 108.707 46.9321 106.194 40.8658C103.681 34.7995 99.9983 29.2876 95.3553 24.6447C90.7124 20.0017 85.2005 16.3188 79.1342 13.806C73.0679 11.2933 66.5661 10 60 10Z" fill="#F3C3A2"/>
+                    </svg>
+                        
+                </div>
+                <div style="position: relative;">
+                    <h2 style="font-family: 'Poppins', sans-serif; position: absolute; top: 50%; transform: translateY(-50%); left:10px; font-weight: 400;">Information</h2>
+                </div>
+                <div id="cardText" style="font-family: 'Poppins', sans-serif; padding-left: 10px;">
+                    At Scalp Smart, we prioritize education and awareness, delivering accurate information to empower users with a deeper understanding of the various stages of hair fall and proactive measures for maintaining optimal scalp health.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center" id="about_us" style="font-family: 'Poppins', sans-serif;">Our Team</h2>
+    <div class="teamContainer">
+        <div>
+            <div class="teamCard" id="tirthraj">
+                <div class="imageHolder">
+                    <div class="imageHover"></div>
+                </div>
+                <div class="TextHolder">
+                    <div>Tirthraj Mahajan</div>
+                    <div>Full Stack Web Developer</div>
+                    <div>Database Specialist</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="teamCard" id="advait">
+                <div class="imageHolder">
+                    <div class="imageHover"></div>
+                </div>
+                <div class="TextHolder">
+                    <div>Advait Joshi</div>
+                    <div>ML Specialist</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="teamCard" id="amey">
+                <div class="imageHolder">
+                    <div class="imageHover"></div>
+                </div>
+                <div class="TextHolder">
+                    <div>Amey Kulkarni</div>
+                    <div>App Developer</div>
+                    <div>Database Specialist</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="teamCard" id="rinit">
+                <div class="imageHolder">
+                    <div class="imageHover"></div>
+                </div>
+                <div class="TextHolder">
+                    <div>Rinit Jain</div>
+                    <div>ML Specialist</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="teamCard" id="tirthraj">
+                <div class="imageHolder">
+                    <div class="imageHover"></div>
+                </div>
+                <div class="TextHolder">
+                    <div>Suvrat Ketkar</div>
+                    <div>Web Developer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Provided to you by Scalp Smart</p>
+        <p>@2024 PBL Group Project</p>
+    </footer>
 
     <script src="{{url_for('static', filename='js/User/user_home.js')}}" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
