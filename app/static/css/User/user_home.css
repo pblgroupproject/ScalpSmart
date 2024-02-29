@@ -412,9 +412,9 @@ footer p:last-child{
     margin-bottom: 5vh;
 }
 
-.appContainer>div{
-    /* border: 1px solid black; */
-}
+/* .appContainer>div{
+    border: 1px solid black;
+} */
 
 .appContainer .appImageText{
     display: flex;
