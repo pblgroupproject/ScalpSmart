@@ -51,6 +51,7 @@ body{
     overflow-x: hidden;
     position: relative;
     isolation: isolate;
+    background-color: #F9F9F9;
 }
 
 #navbar-brand{
@@ -66,6 +67,7 @@ body{
 
 nav{
     box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+    background-color: white;
 }
 
 .nav-link{
@@ -76,144 +78,7 @@ nav{
 
 .nav-link:hover{
     scale: 1.1;
-    /* box-shadow: 1px 1px 3px rgba(0,0,0,0.5); */
     filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.3));
-}
-
-
-.backgroundGradient{
-    /* border: 1px solid black; */
-    width: 100%;
-    position: absolute;
-    height: 30vh;
-    background-color:#0cb8b6;
-    background-image: url('https://medicare.bold-themes.com/clinic/wp-content/uploads/sites/2/2015/12/bgn-grad.png');
-    z-index: -1;
-}
-
-.containerGrid{
-    display: grid;
-    /* border: 1px solid black; */
-    width: 100%;
-    min-height: 70vh;
-    grid-template-columns: 1fr 3fr;
-    margin-top: 10vh;
-}
-
-/* .containerGrid div{
-    border: 1px solid black;
-} */
-
-.imageHolderDiv{
-    position: relative;
-}
-
-.imageHolderDiv .personCard{
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    /* border: 1px solid black; */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border-radius: 10px;
-    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
-    animation: slide_in 2200ms forwards ease;
-}
-
-@keyframes slide_in {
-    0%{
-        left:10%;
-        opacity: 0;
-    }
-
-    100%{
-        left:50%;
-        opacity: 1;
-    }
-}
-
-.textCardDiv{
-    animation: fade 2200ms ease-in-out;
-}
-
-@keyframes fade {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
-.textCardDiv header{
-    /* border: 1px solid black; */
-    height: 20vh;
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    overflow: hidden;
-}
-
-.textCardDiv header>div{
-    position: absolute;
-    top:50%;
-    left: 10%;
-    transform: translate(0%,-50%);
-    font-size: 3.5rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: white;
-}
-
-.textbox{
-    /* border: 1px solid black; */
-    font-family: 'Poppins', sans-serif;
-    padding: 10px;
-    width: 90%;
-    /* background-color: #F1F1F1; */
-    margin-top: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-}
-
-.linkDiv{
-    /* border: 1px solid black; */
-    font-family: 'Poppins', sans-serif;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    width: min-content;
-    /* background-color: #F1F1F1; */
-    margin-top: 10px;
-    /* box-shadow: 2px 2px 5px rgba(0,0,0,0.3); */
-}
-
-.linkDiv div{
-    border: 1px solid black;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    padding: 10px;
-    overflow: hidden;
-    position: relative;
-    transition: all 300ms ease;
-    margin-inline: 10px;
-}
-
-.linkDiv div:hover{
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    scale:1.01;
-}
-
-.linkDiv div svg{
-    width: 70%;
-    height: 70%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
 }
 
 footer{
@@ -222,10 +87,10 @@ footer{
     background-color: rgb(46,48,55);
     font-family: 'Poppins', sans-serif;
     color: white;
-    position: fixed;
     width: 100%;
     bottom: 0;
     left: 0;
+    height: 10vh;
 }
 
 footer p{
@@ -236,49 +101,165 @@ footer p:last-child{
     margin-left: 20vw;
 }
 
-@media (max-width: 1300px) {    
-.selfTestContainer .overlayImage{
-    left: -40%;
-    padding:5px;
-    justify-content: space-evenly;
+.hero{
+    /* border:1px solid black; */
+    height: 20vh;
+    position: relative;
+    background-color:#0cb8b6;
+    background-image:url('https://medicare.bold-themes.com/clinic/wp-content/uploads/sites/2/2015/12/bgn-grad.png');
+
 }
 
-.selfTestContainer .overlayImage #overlayText{
-    font-size: 1rem;
+#root{
+    margin-block: 20px;
+    /* border: 1px solid black; */
+    position: relative;
+}
+
+.UserOptions{
+    
+    /* border: 1px solid black; */
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    min-height: 55vh;
+    width: 50%;
+    margin: auto;
+
+}
+
+
+.UserOptions .cardHolder{
+    /* border: 1px solid black; */
+    position: relative;
+}
+
+.UserOptions .cardHolder .card{
+    /* border: 1px solid black; */
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    background-color: whitesmoke;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.5);
+    border-radius: 30px;
+    transition: all 400ms ease-in-out;
+    /* opacity: 0; */
+    /* background: rgb(255,239,0); */
+
+    /* background: rgb(151,71,255);
+    background: linear-gradient(267deg, rgba(151,71,255,1) 0%, rgba(66,193,245,1) 100%); */
+}
+
+.UserOptions .cardHolder:first-child .card{
+    animation: slide_right 1500ms ease-in-out forwards;
+}
+
+.UserOptions .cardHolder:last-child .card{
+    animation: slide_right 1000ms ease-in-out forwards;
+}
+
+@keyframes slide_right {
+    0%{
+        opacity: 0;
+        left: -50%;
+    }
+    100%{
+        opacity: 1;
+        /* left: 0; */
+    }
+}
+
+.UserOptions .cardHolder .card:hover{
+    background-color: rgba(66,165,245);
+    scale: 1.05;
+    opacity: 1;
+    cursor: pointer;
+    box-shadow: 5px 5px 4px rgba(0,0,0,0.3);
+}
+
+.UserOptions .cardHolder .card>div{
+    /* border: 1px solid black; */
+    overflow: hidden;
+    position: relative;
+}
+
+.UserOptions .cardHolder .card svg{
+    /* border: 1px solid black; */
+    height: 100%;
+    aspect-ratio: 1;
+    margin: auto;
+    display: block;
+}
+/* .card .header{
+
+} */
+
+.UserOptions .cardHolder .card div h3{
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-weight: 700;
+    color: black;
+    font-size: 2.5rem;
+    /* border: 1px solid black; */
+}
+
+.UserOptions .cardHolder .card:hover div h3{
+    color: white;
+}
+
+
+@keyframes fadein {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.hero h1{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 4rem;
+    color:white;
+    animation: fadein 1500ms forwards ease-in-out;
+}
+
+@media screen and (min-width: 800px) {
+.mobile{
+    display: none !important;
 }
 }
 
 @media (max-width: 700px){
 
-nav{
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+#navbar-brand{
+    font-size: 1.9rem;
+    padding-left: 0;
 }
 
 .nav-link{
     font-size: 1.3rem;
-    margin-right: 20px;
-    transition: all 200ms ease;
+    margin-right: 0px;
 }
+
 
 .nav-link:hover{
-    scale: 1.1;
-    /* box-shadow: 1px 1px 3px rgba(0,0,0,0.5); */
-    filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.3));
+    scale: 1;
+    filter: drop-shadow(3px 3px 1px rgba(0,0,0,0));
 }
 
-
-#navbar-brand{
-    font-size: 1.9rem;
-    /* border: 1px solid black; */
-    /* padding-left: 10%; */
-    padding-left: 0;
-}
-
-
-footer{
-    padding-block: 10px;
-    text-align: center;
-}
 
 footer p{
     display: block;
@@ -288,32 +269,24 @@ footer p{
 footer p:last-child{
     margin-left: 0;
 }
-.containerGrid{
-    width: 100%;
-    height: auto;
-    grid-template-columns: 1fr;
-    margin-top: 10vh;
-}
 
-.containerGrid>div:first-child{
-    aspect-ratio: 1/1.5;
-    width: 100%;
-    
-}
-
-.textCardDiv header{
-    display: none;
-}
-
-.textbox{
-    width: 100%;
-}
-.linkDiv{
-    width: 100%;
-}
 footer{
+    padding-block: 10px;
+    text-align: center;
     color: white;
     position:static;
 }
+
+.hero h1{
+    font-size: 2.5rem;
+}
+
+.UserOptions{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 70vh;
+    width: 90%;
+}
+
 
 }

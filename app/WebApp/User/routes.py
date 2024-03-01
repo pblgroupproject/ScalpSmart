@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, jsonify
 user_bp = Blueprint('user',__name__)
 
 @user_bp.route('/home')
@@ -95,3 +95,17 @@ def about(person=None):
 @user_bp.route('/info')
 def info():
     return render_template('User/user_info.html')
+
+@user_bp.route('self-test')
+def self_test():
+    return render_template('User/user_selftest.html')
+
+
+@user_bp.route('self-test/<method>')
+def self_test_method(method):
+    if method == 'capture':
+        return jsonify({'method':'capture'})
+    elif method == 'upload':
+        return jsonify({'method':'upload'})
+    else:
+        return redirect(url_for('main.web.user.self_test'))
