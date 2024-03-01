@@ -9,19 +9,145 @@ import {
 
 } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"
 
-const firebaseConfig = {
-    apiKey: "AIzaSyARU2xp7aOI2yGqSLQY2Oe0HAfbeYKn-TE",
-    authDomain: "practice-33346.firebaseapp.com",
-    projectId: "practice-33346",
-    storageBucket: "practice-33346.appspot.com",
-    messagingSenderId: "537649547722",
-    appId: "1:537649547722:web:3895e6aed8918b04b22733"
-};
+document.addEventListener('DOMContentLoaded', function() {
+    firebaseConfig();
+});
     
-const app = initializeApp(firebaseConfig);
-    
-const auth = getAuth(app);
+const firebaseConfig = async function(){
+    try{
+        const database_key = '5ANbyQ87c4SgfALjn3eSYj6zjbgoTj5A'
+        const response = await fetch(`/api/env/firebaseConfig?api_key=${database_key}`,{
+            headers:{
+                'Referer':`https://${window.location.hostname}`
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch Firebase configuration');
+        }
+        const firebaseConfig = await response.json();
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
+        console.log('Firebase initialized successfully');
+
+        document.getElementById('root').addEventListener('submit', function(e){
+            if(e.target && e.target.id == 'loginForm') {
+                e.preventDefault();
+                const loginForm = e.target;
+                const email = loginForm.email.value;
+                const password = loginForm.password.value;
+                signInWithEmailAndPassword(auth,email,password)
+                    .then((cred) => {
+                        console.log("User Created : ", cred.user);
+                        console.log("User ID", cred.user.uid);
+        
+                        // Query to get user_type from Firebase
+        
+                        let sessionJSON = {
+                            "user_id": cred.user.uid,
+                            "user_type": "user"
+                        }
+        
+                        loginForm.reset();
+        
+                        return fetch('/update_session', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(sessionJSON)
+                        });
+                    })
+                    .then(response => {
+                        if(response.ok){
+                            return response.json();
+                        }
+                        else{
+                            console.log("Failed to update user session")
+                            throw new Error('Failed to update user session');
+                        }
+                    })
+                    .then(data => {
+                        console.log("Response from server:");
+                        console.log(data);
+                        alert("Logged In Successfully!");
+                        location.reload();
+                    })
+                    .catch(err => {
+                        console.log(`Error Code : ${err.code}`);
+                        console.log(`Error Message : ${err.message}`);
+                        alert(`Error Message : ${err.message}`)
+                        loginForm.reset();
+                    })
+            }
+        });
+        
+        
+        document.getElementById('root').addEventListener('submit', function(e){
+            if(e.target && e.target.id == 'signupForm') {
+                e.preventDefault();
+                const signupForm = e.target;
+                const name = signupForm.name.value;
+                const email = signupForm.email.value;
+                const password = signupForm.password.value;
+                createUserWithEmailAndPassword(auth,email,password)
+                    .then((cred) => {
+                        console.log("User Created : ", cred.user);
+                        console.log("User ID", cred.user.uid);
+                        
+                        // Put a query here to set the name of the person
+        
+                        let sessionJSON = {
+                            "user_id": cred.user.uid,
+                            "user_type": "user"
+                        }
+        
+                        signupForm.reset();
+        
+                        return fetch('/update_session', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(sessionJSON)
+                        });
+                    })
+                    .then(response => {
+                        if(response.ok){
+                            return response.json();
+                        }
+                        else{
+                            console.log("Failed to update user session")
+                            throw new Error('Failed to update user session');
+                        }
+                    })
+                    .then(data => {
+                        console.log("Response from server:");
+                        console.log(data);
+                        alert("Sign Up Successful!");
+                        location.reload();
+                    })
+                    .catch(err => {
+                        console.log(`Error Code : ${err.code}`);
+                        console.log(`Error Message : ${err.message}`);
+                        alert(`Error Message : ${err.message}`)
+                        signupForm.reset();
+                    })
+            }
+        });
+        
+        document.getElementById('root').addEventListener('submit', function(e){
+            if(e.target && e.target.id == 'doctorForm') {
+                e.preventDefault();
+            }
+        });
+
+
+    }
+    catch(error){
+        console.error('Error initializing Firebase:', error)
+    }
+}
 
 const signUpWindow = `
 <div class="container">
@@ -175,152 +301,3 @@ document.getElementById('root').addEventListener('click', function(e){
         document.getElementById('root').innerHTML = doctorWindow; 
     }
 });
-// Prevent form submission for loginForm
-document.getElementById('root').addEventListener('submit', function(e){
-    if(e.target && e.target.id == 'loginForm') {
-        e.preventDefault();
-        const loginForm = e.target;
-        const email = loginForm.email.value;
-        const password = loginForm.password.value;
-        signInWithEmailAndPassword(auth,email,password)
-            .then((cred) => {
-                console.log("User Created : ", cred.user);
-                console.log("User ID", cred.user.uid);
-
-                // Query to get user_type from Firebase
-
-                let sessionJSON = {
-                    "user_id": cred.user.uid,
-                    "user_type": "user"
-                }
-
-                loginForm.reset();
-
-                return fetch('/update_session', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(sessionJSON)
-                });
-            })
-            .then(response => {
-                if(response.ok){
-                    return response.json();
-                }
-                else{
-                    console.log("Failed to update user session")
-                    throw new Error('Failed to update user session');
-                }
-            })
-            .then(data => {
-                console.log("Response from server:");
-                console.log(data);
-                alert("Logged In Successfully!");
-                location.reload();
-            })
-            .catch(err => {
-                console.log(`Error Code : ${err.code}`);
-                console.log(`Error Message : ${err.message}`);
-                alert(`Error Message : ${err.message}`)
-                loginForm.reset();
-            })
-    }
-});
-
-// Prevent form submission for signupForm
-document.getElementById('root').addEventListener('submit', function(e){
-    if(e.target && e.target.id == 'signupForm') {
-        e.preventDefault();
-        const signupForm = e.target;
-        const name = signupForm.name.value;
-        const email = signupForm.email.value;
-        const password = signupForm.password.value;
-        createUserWithEmailAndPassword(auth,email,password)
-            .then((cred) => {
-                console.log("User Created : ", cred.user);
-                console.log("User ID", cred.user.uid);
-                
-                // Put a query here to set the name of the person
-
-                let sessionJSON = {
-                    "user_id": cred.user.uid,
-                    "user_type": "user"
-                }
-
-                signupForm.reset();
-
-                return fetch('/update_session', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(sessionJSON)
-                });
-            })
-            .then(response => {
-                if(response.ok){
-                    return response.json();
-                }
-                else{
-                    console.log("Failed to update user session")
-                    throw new Error('Failed to update user session');
-                }
-            })
-            .then(data => {
-                console.log("Response from server:");
-                console.log(data);
-                alert("Sign Up Successful!");
-                location.reload();
-            })
-            .catch(err => {
-                console.log(`Error Code : ${err.code}`);
-                console.log(`Error Message : ${err.message}`);
-                alert(`Error Message : ${err.message}`)
-                signupForm.reset();
-            })
-    }
-});
-
-document.getElementById('root').addEventListener('submit', function(e){
-    if(e.target && e.target.id == 'doctorForm') {
-        e.preventDefault();
-    }
-});
-
-// document.getElementById('authForm').addEventListener('submit',function(event){
-//     event.preventDefault();
-//     let sessionJSON = {
-//         "user_id": document.getElementById('user_id').value,
-//         "user_type": document.getElementById('user_type').value
-//     }
-
-//     console.log(sessionJSON)
-
-//     fetch('/update_session', {
-//         method : 'POST',
-//         headers : {
-//             'Content-Type':'application/json'
-//         },
-//         body: JSON.stringify(sessionJSON)
-//     })
-//     .then(response => {
-//         if(response.ok){
-//             return response.json();
-//         }
-//         else{
-//             console.log("Failed to update user session")
-//             throw new Error('Failed to update user session');
-//         }
-//     })
-//     .then(data => {
-//         console.log("Response from server:");
-//         console.log(data);
-//         alert("Logged In Successfully!")
-//         location.reload();
-//     })
-//     .catch(e=>{
-//         console.error('Error', e)
-//     })
-
-// })
