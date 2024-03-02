@@ -116,4 +116,4 @@ def self_test_method(method):
 
 @user_bp.route('self-test/result')
 def result():
-    return jsonify({"images": "image_list"})
+    return render_template('User/user_selftest_result.html')

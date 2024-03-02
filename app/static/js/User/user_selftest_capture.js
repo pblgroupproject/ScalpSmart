@@ -192,7 +192,10 @@ document.getElementById('imageForm').addEventListener('submit',function(event){
             progressText.innerText = 'Analysis Completed! Showing Results..'
             if(timer < 100 ) {timer = 100};
             clearInterval(timerInterval);
-            updateProgressBar()
+            updateProgressBar();
+            setTimeout(() => {
+                window.location.href = '/user/self-test/result'
+            }, 1500);
         })
         .catch(error => {
             throw new Error(error);
