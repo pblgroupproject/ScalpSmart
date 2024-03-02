@@ -23,6 +23,11 @@ def allowed_file(filename):
 
 @model_bp.route('/upload', methods=['POST'])
 def upload_file():
+    user_id = request.args.get('user_id', default=None)
+
+    if not user_id:
+        return jsonify({'error': 'User id not provided'})
+    
     if 'image' not in request.files:
         return jsonify({"error": "No image part"}), 400
     file = request.files['image']
@@ -31,7 +36,7 @@ def upload_file():
         return jsonify({"error": "No selected file"}), 400
 
     if file and allowed_file(file.filename):
-        saved_filename = "uploaded_image.png"
+        saved_filename =  f"{user_id}.png"
         file.save(os.path.join('./app/uploads', saved_filename))
         return jsonify({"message": "File uploaded successfully", "filename": saved_filename}), 200
     else:
@@ -44,7 +49,10 @@ def get_file():
 @model_bp.route('/predict')
 def predict():
     user_id = request.args.get('user_id', default=None)
-    filename = "uploaded_image.png" 
+    if not user_id:
+        return jsonify({'error':'user id not provided'})
+    
+    filename = f"{user_id}.png"
 
     file_path = os.path.join("./app/uploads", filename)
     if not os.path.exists(file_path):
@@ -75,8 +83,8 @@ def predict():
         image_buffer = BytesIO()
         result_image.save(image_buffer, format="PNG")
         image_data = base64.b64encode(image_buffer.getvalue()).decode("utf-8")    
-        if user_id:
-            add_user_image(user_id, image_data, stage)    
+        
+        add_user_image(user_id, image_data, stage)    
 
         return jsonify({"stage": f"{stage}", "file": image_data}), 200
 

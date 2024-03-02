@@ -170,7 +170,7 @@ document.getElementById('imageForm').addEventListener('submit',function(event){
     .then(user_id => {
         progressText.innerText = 'Uploading Image to Server..';
         if(timer < 25 ) {timer = 25};
-        const upload_url = '/api/model/upload' + '?api_key=' + encodeURIComponent(api_key);
+        const upload_url = '/api/model/upload' + '?api_key=' + encodeURIComponent(api_key)+ '&user_id=' + encodeURIComponent(user_id);
         return fetch(upload_url, {
             method: 'POST',
             body: formData
