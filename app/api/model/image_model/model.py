@@ -4,6 +4,10 @@ from ultralytics import YOLO
 from PIL import Image
 import base64
 from io import BytesIO
+from datetime import datetime
+import sqlite3
+
+IMAGE_DB_PATH = './app/database/user_images.db'
 
 model_bp = Blueprint('model', __name__)
 
@@ -39,6 +43,7 @@ def get_file():
 
 @model_bp.route('/predict')
 def predict():
+    user_id = request.args.get('user_id', default=None)
     filename = "uploaded_image.png" 
 
     file_path = os.path.join("./app/uploads", filename)
@@ -69,9 +74,31 @@ def predict():
         result_image = Image.fromarray(im_array[..., ::-1])
         image_buffer = BytesIO()
         result_image.save(image_buffer, format="PNG")
-        image_data = base64.b64encode(image_buffer.getvalue()).decode("utf-8")        
+        image_data = base64.b64encode(image_buffer.getvalue()).decode("utf-8")    
+        if user_id:
+            add_user_image(user_id, image_data, stage)    
 
         return jsonify({"stage": f"{stage}", "file": image_data}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+def add_user_image(user_id, image_data, stage):
+    try:
+        conn = sqlite3.connect(IMAGE_DB_PATH)
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            INSERT INTO user_images (user_id, image_data, upload_time, stage)
+            VALUES (?, ?, ?, ?)
+        """, (user_id, image_data, datetime.now(), stage))
+
+        conn.commit()
+
+        conn.close()
+
+        return True, None 
+
+    except Exception as e:
+        return False, str(e)

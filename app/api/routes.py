@@ -14,6 +14,10 @@ api_bp.register_blueprint(model_bp,url_prefix="/model")
 from .database.products.routes import db_bp
 api_bp.register_blueprint(db_bp, url_prefix="/database")
 
+from .database.images.routes import image_db_bp
+api_bp.register_blueprint(image_db_bp, url_prefix="/images")
+
+
 from .environment.routes import env_bp
 api_bp.register_blueprint(env_bp, url_prefix="/env")
 

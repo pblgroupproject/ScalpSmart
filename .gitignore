@@ -8,6 +8,7 @@ __pycache__/
 
 uploads/
 flask_session/
+uploaded_image.png
 
 # Distribution / packaging
 .Python
@@ -91,3 +92,5 @@ ENV/
 # Rope project settings
 .ropeproject
 app/flutterApp/readme.md
+app/uploads/uploaded_image.png
+app/uploads/uploaded_image.png
