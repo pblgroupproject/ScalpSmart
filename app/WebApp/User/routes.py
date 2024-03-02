@@ -114,23 +114,6 @@ def self_test_method(method):
         return redirect(url_for('main.web.user.self_test'))
     
 
-def get_recent_images(user_id):
-    try:
-        conn = sqlite3.connect(IMAGE_DB_PATH)
-        cursor = conn.cursor()
-
-        cursor.execute("SELECT image_data, upload_time, stage FROM user_images WHERE user_id = ? ORDER BY upload_time DESC LIMIT 1", (user_id,))
-        images = cursor.fetchall()
-
-
-        conn.close()
-        image_list = [{"image_data": image[0], "upload_time": image[1], "stage": image[2]} for image in images]
-        return image_list
-    except:
-        return []
-
-
 @user_bp.route('self-test/result')
 def result():
-    image_list = get_recent_images(session['user_id'])
-    return jsonify({"images": image_list})
+    return jsonify({"images": "image_list"})

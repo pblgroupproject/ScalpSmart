@@ -59,7 +59,7 @@ def predict():
         return jsonify({"error": f"File not found: {filename}"}), 404
 
     try:
-        model_path = os.path.join("./app/api/model/image_model", 'version3_smallyolo_best.pt')
+        model_path = os.path.join("./app/api/model/image_model", 'version3_nanoyolo_best.pt')
         model = YOLO(model_path)
         results = model(file_path)
         result = results[0]
