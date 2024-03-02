@@ -104,7 +104,7 @@ def self_test():
 @user_bp.route('self-test/<method>')
 def self_test_method(method):
     if method == 'capture':
-        return jsonify({'method':'capture'})
+        return render_template('User/user_selftest_capture.html')
     elif method == 'upload':
         return jsonify({'method':'upload'})
     else:
