@@ -12,7 +12,7 @@ def firebase_config():
     api_key = request.args.get('api_key')
     referrer = request.referrer
 
-    if api_key == DATABASE_KEY and referrer and urlparse(referrer).hostname == HOSTNAME and urlparse(request.host_url).hostname.startswith(HOSTNAME):
+    if api_key == DATABASE_KEY:
         firebaseConfig = {
             'apiKey': os.getenv('FIREBASE_APIKEY'),
             'authDomain': os.getenv('FIREBASE_AUTHDOMAIN'),

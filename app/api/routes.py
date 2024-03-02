@@ -33,10 +33,7 @@ def before_api_request():
     if api_key == os.getenv('MOBILE_API_KEY'):
         return None
     if api_key == os.getenv('WEB_API_KEY'):
-        if urlparse(request.host_url).hostname.startswith(os.getenv('HOSTNAME')):
             return None
-        else:
-            return jsonify({'error': 'Unauthorized access: Hostname mismatch'}), 401
     else:
         return jsonify({'error': 'Unauthorized access'}), 401
 
