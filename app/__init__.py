@@ -2,7 +2,7 @@ from flask import Flask, Blueprint, session
 from flask_cors import CORS
 import os
 from datetime import timedelta
-from flask_session import Session
+from flask_session.__init__ import Session
 
 def create_app():
     app = Flask(__name__)
