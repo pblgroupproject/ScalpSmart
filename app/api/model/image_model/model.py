@@ -6,6 +6,8 @@ import base64
 from io import BytesIO
 from datetime import datetime
 import sqlite3
+import pytz
+
 
 IMAGE_DB_PATH = './app/database/user_images.db'
 
@@ -94,13 +96,15 @@ def predict():
 
 def add_user_image(user_id, image_data, stage):
     try:
+        IST = pytz.timezone('Asia/Kolkata')
+        upload_time = datetime.now(IST)
         conn = sqlite3.connect(IMAGE_DB_PATH)
         cursor = conn.cursor()
 
         cursor.execute("""
             INSERT INTO user_images (user_id, image_data, upload_time, stage)
             VALUES (?, ?, ?, ?)
-        """, (user_id, image_data, datetime.now(), stage))
+        """, (user_id, image_data, upload_time, stage))
 
         conn.commit()
 
