@@ -109,11 +109,9 @@ def self_test_method(method):
     if method == 'capture':
         return render_template('User/user_selftest_capture.html')
     elif method == 'upload':
-        return jsonify({'method':'upload'})
+        return render_template('User/user_selftest_upload.html')
+    elif method == 'result':
+        return render_template('User/user_selftest_result.html')
     else:
         return redirect(url_for('main.web.user.self_test'))
     
-
-@user_bp.route('self-test/result')
-def result():
-    return render_template('User/user_selftest_result.html')

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalp Smart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/User/user_selftest_upload.css')}}">
+</head>
+<body>
+    <div class="loadingScreen" id="loadingScreen" style="display: none;">
+
+        <div class="progressDiv">
+            <h3 id="progressText">Initiating..</h3>
+            <div class="progress">
+                <div id="progress-bar" class="progress-bar" style="width: 0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+        <div id="loading-wrapper">
+            <div id="loading-text">LOADING..</div>
+            <div id="loading-content"></div>
+        </div>
+
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg bg-light p-2" style="display: grid; grid-template-columns: 1fr 1fr;">
+        <div><a class="navbar-brand" href="#" id="navbar-brand">Scalp Smart</a></div>
+        <div class="navbar-toggler d-md-none border-0" style="display: flex; justify-content: end;">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: end;">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" aria-current="page" href="/user/home">
+                  Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/user/about">
+                  About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/user/info">
+                  Info
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/user/marketplace">
+                  Market Place
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="display: inline-block;" href="/user/self-test">
+                  Self-Test
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/user/chat">
+                  Chat
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="display: inline-block;" href="/logout">
+                  Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+  </nav>
+
+  <div class="hero">
+
+      <h1>SELF - TEST</h1>
+
+  </div>
+
+  <div id="root">
+
+      <form id="imageForm">
+
+        <div class="mb-4">
+            <label for="formFileLg" class="form-label">Large file input example</label>
+            <input class="form-control form-control-lg" id="inputImage" type="file" accept="image/jpeg, image/png" multiple="false">
+        </div>
+
+          <div class="Container">
+
+              
+
+              <div class="container-item" id="container-item">
+
+
+
+              </div>
+              
+
+          </div>
+
+      </form>
+
+
+      <div class="submitContainer" id="submitContainer" style="display: none;">
+          <h3>Send Image for Analysis</h3>
+          <div>
+              ⚠️ Make sure that you are at the center of the image as it affects the analysis <br>
+              ⚠️ These images are stored in the user history <br>
+              ⚠️ The analysis may take some time, do not close the window during that period 
+          </div>
+          <div>
+              <button type="button" id="analyzeBtn" class="btn btn-warning">Analyze</button>
+          </div>
+      </div>
+
+  </div>
+
+
+  <footer>
+      <p>Provided to you by Scalp Smart</p>
+      <p>@2024 PBL Group Project</p>
+  </footer>
+
+
+
+    
+    <script src="{{url_for('static', filename='js/User/user_selftest_upload.js')}}" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
