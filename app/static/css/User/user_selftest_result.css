@@ -247,6 +247,7 @@ nav{
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     position: absolute;
+    text-transform: capitalize;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -314,6 +315,54 @@ footer p:last-child{
     margin: auto;
 }
 
+
+
+#resultDescription{
+  /* border: 1px solid black; */
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+}
+
+.options{
+  /* border: 1px solid black; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 5vh;
+}
+
+.info{
+  border: 1px solid black;
+  width: 50%;
+  margin: auto;
+  margin-top: 5vh;
+  border-radius: 20px;
+  min-height: 20vh;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 1.1rem;
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+}
+
+.info h2{
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.info strong{
+  font-size: 1.5rem;
+}
+
+.info #text{
+  margin:1rem;
+}
+
+
 @media screen and (min-width: 800px) {
 .mobile{
     display: none !important;
@@ -360,7 +409,7 @@ footer{
     height: fit-content;
     text-align: center;
     color: white;
-    position:fixed;
+    /* position:fixed; */
     /* font-size: 1rem; */
     bottom: 0;
     left: 0;
@@ -375,5 +424,27 @@ footer{
     width: 100%;
     padding: 0px;
 }
+
+
+.info{
+  width: 80%;
+  font-size: 1.1rem;
+
+}
+
+.info h2{
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.info strong{
+  font-size: 1.5rem;
+}
+
+.info #text{
+  margin:1rem;
+}
+
 
 }

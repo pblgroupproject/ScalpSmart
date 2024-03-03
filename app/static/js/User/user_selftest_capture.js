@@ -66,7 +66,10 @@ document.getElementById('snapshotCaptureBtn').addEventListener('click',function(
     const videoElement = document.getElementById('webcamVideo');
     canvas.width = videoElement.videoWidth;
     canvas.height = videoElement.videoHeight;
-    canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+    const ctx = canvas.getContext('2d');
+    ctx.scale(-1, 1);
+    ctx.translate(-canvas.width, 0);
+    ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
     const snapshot = canvas.toDataURL('image/jpeg');
     stopWebcam();
     document.getElementById('container-item').style.display = 'none';
