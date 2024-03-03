@@ -150,7 +150,6 @@ document.getElementById('imageForm').addEventListener('submit',function(event){
         console.log('Error', err);
         clearInterval(timerInterval);
         alert(`${err}`);
-        location.reload();
     })
 
 })
