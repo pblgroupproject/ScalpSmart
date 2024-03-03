@@ -150,7 +150,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     })
-
+    .catch(err => {
+        console.error(err);;
+        alert(`Error: ${err}`)
+        window.location.href = '/user/self-test';
+    })
 
 
 
