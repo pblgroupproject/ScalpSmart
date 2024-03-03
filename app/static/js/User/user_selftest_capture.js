@@ -29,6 +29,7 @@ function captureFromWebcam(){
             document.getElementById('warningTextContainer').style.display = 'none';
             document.getElementById('container-item').style.display = 'block';
             videoElement.style.objectFit = 'cover';
+            videoElement.style.transform = 'scaleX(-1)';
             // videoElement.style.display = 'block';
         })
         .catch((error) => {
