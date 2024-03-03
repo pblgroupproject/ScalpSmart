@@ -130,15 +130,12 @@ function formatDate(inputDate) {
     const hours = date.getHours();
     const minutes = date.getMinutes();
 
-    // Determine the ordinal suffix for the day
-    const daySuffix = (day >= 11 && day <= 13) ? 'th' : ordinalSuffix[day % 10];
-
     // Convert hours to 12-hour format and determine AM/PM
     const ampm = hours >= 12 ? 'pm' : 'am';
     const formattedHours = hours % 12 || 12;
 
     // Construct the formatted date string
-    const formattedDate = `${day}${daySuffix} ${months[month]} ${year}, ${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+    const formattedDate = `${day} ${months[month]} ${year}, ${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
 
     return formattedDate;
 }
