@@ -71,7 +71,7 @@ def get_product(product_id):
     
 
 
-@db_bp.route('/products/', methods=['GET','POST'])
+@db_bp.route('/products', methods=['GET','POST'])
 def get_all_products():
     if not os.path.exists(DB_PATH):
         return jsonify({'error': 'Database not found'}), 500  

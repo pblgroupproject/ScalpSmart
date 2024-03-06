@@ -16,6 +16,7 @@ def firebase_config():
         firebaseConfig = {
             'apiKey': os.getenv('FIREBASE_APIKEY'),
             'authDomain': os.getenv('FIREBASE_AUTHDOMAIN'),
+            'databaseURL':os.getenv('FIREBASE_DATABASE_URL'),
             'projectId': os.getenv('FIREBASE_PROJECTID'),
             'storageBucket': os.getenv('FIREBASE_STORAGEBUCKET'),
             'messagingSenderId': os.getenv('FIREBASE_MESSAGINGSENDERID'),
