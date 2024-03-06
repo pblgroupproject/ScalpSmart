@@ -14,13 +14,13 @@ def firebase_config():
 
     if api_key == DATABASE_KEY:
         firebaseConfig = {
-            'apiKey': os.getenv('FIREBASE_APIKEY'),
-            'authDomain': os.getenv('FIREBASE_AUTHDOMAIN'),
-            'databaseURL':os.getenv('FIREBASE_DATABASE_URL'),
-            'projectId': os.getenv('FIREBASE_PROJECTID'),
-            'storageBucket': os.getenv('FIREBASE_STORAGEBUCKET'),
-            'messagingSenderId': os.getenv('FIREBASE_MESSAGINGSENDERID'),
-            'appId': os.getenv('FIREBASE_APPID')
+            'apiKey': os.getenv('FB_APIKEY'),
+            'authDomain': os.getenv('FB_AUTHDOMAIN'),
+            'databaseURL':os.getenv('FB_DATABASE_URL'),
+            'projectId': os.getenv('FB_PROJECTID'),
+            'storageBucket': os.getenv('FB_STORAGEBUCKET'),
+            'messagingSenderId': os.getenv('FB_MESSAGINGSENDERID'),
+            'appId': os.getenv('FB_APPID')
         };
         return jsonify(firebaseConfig), 200
     return jsonify({'error': 'Unauthorized User'}), 401
