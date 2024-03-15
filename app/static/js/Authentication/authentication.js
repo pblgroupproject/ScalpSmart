@@ -9,6 +9,20 @@ import {
 
 } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"
 
+import { 
+    getFirestore, collection, 
+    getDocs, 
+    addDoc, 
+    setDoc,
+    doc, deleteDoc, 
+    onSnapshot,
+    query, where,
+    orderBy, limit,
+    serverTimestamp, Timestamp,
+    getDoc, updateDoc
+
+} from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+
 document.addEventListener('DOMContentLoaded', function() {
     firebaseConfig();
 });
@@ -27,6 +41,8 @@ const firebaseConfig = async function(){
         const firebaseConfig = await response.json();
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app)
+        const UserRef = collection(db,'Users')
 
         console.log('Firebase initialized successfully');
 
@@ -37,15 +53,38 @@ const firebaseConfig = async function(){
                 const email = loginForm.email.value;
                 const password = loginForm.password.value;
                 signInWithEmailAndPassword(auth,email,password)
-                    .then((cred) => {
+                    .then(async (cred) => {
                         console.log("User Created : ", cred.user);
                         console.log("User ID", cred.user.uid);
         
                         // Query to get user_type from Firebase
+                        let user_role = null;
+                        const getDocPromise = new Promise((resolve,reject)=>{
+                            let docRef = doc(db,'Users',cred.user.uid);
+                            getDoc(docRef)
+                            .then(doc=>{
+                                user_role = doc.data().role;
+                                resolve(user_role) 
+                            })
+                            .catch(err => {
+                                reject(new Error(err));
+                            })
+                        })
+                        await getDocPromise;
+                        let user_type = "user"
+                        if(user_role==="Patient"){
+                            user_type = "user"
+                        }
+                        else if(user_role==="Doctor"){
+                            user_type = "doctor"
+                        }
+                        else if(user_role==="Admin"){
+                            user_type = "admin"
+                        }
         
                         let sessionJSON = {
                             "user_id": cred.user.uid,
-                            "user_type": "user"
+                            "user_type": user_type
                         }
         
                         loginForm.reset();
@@ -91,12 +130,31 @@ const firebaseConfig = async function(){
                 const email = signupForm.email.value;
                 const password = signupForm.password.value;
                 createUserWithEmailAndPassword(auth,email,password)
-                    .then((cred) => {
+                    .then(async (cred) => {
                         console.log("User Created : ", cred.user);
                         console.log("User ID", cred.user.uid);
                         
                         // Put a query here to set the name of the person
-        
+                        const setDocPromise = new Promise((resolve,reject)=>{
+                            setDoc(doc(db,'Users',cred.user.uid),{
+                                name:name,
+                                email:email,
+                                online:'true',
+                                role:'Patient',
+                                uid:cred.user.uid,
+                                image:"" 
+                            })
+                            .then(()=>{
+                                console.log('User added to firestore');
+                                resolve(true)
+                            })
+                            .catch(err=>{
+                                reject(new Error(err));
+                            })
+                        })
+
+                        await setDocPromise;
+
                         let sessionJSON = {
                             "user_id": cred.user.uid,
                             "user_type": "user"
