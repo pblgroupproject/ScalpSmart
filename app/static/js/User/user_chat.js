@@ -183,6 +183,40 @@ async function loadChatbotHistory(){
     
 }
 
+async function addUIDtoDoctor(uid,doctor_id){
+    console.log(doctor_id);
+    const doctorRef = doc(db,'Users',doctor_id)
+    let assigned_patients = []
+    const getDocPromise = new Promise((resolve,reject)=>{
+        getDoc(doctorRef)
+        .then(doc=>{
+            console.log(doc);
+            console.log(doc.data());
+            assigned_patients = doc.data()['assigned_patients']
+            resolve(assigned_patients);
+        })
+        .catch(err=>{
+            reject(new Error(err));
+        })
+    })
+    await getDocPromise;
+    assigned_patients.push(uid);
+    let update = {
+        assigned_patients:assigned_patients
+    }
+    const updateDocPromise = new Promise((resolve,reject)=>{
+        updateDoc(doctorRef,update)
+        .then(()=>{
+            console.log("Updated Doctor assigned_patients successfully");
+            resolve(true)
+        })
+        .catch(err=>{
+            reject(new Error(err));
+        })
+    })
+
+    await updateDocPromise;
+}
 
 async function loadChatHistory(doctor_id){
     console.log("Loading Chat History", chatMode);
@@ -207,8 +241,11 @@ async function loadChatHistory(doctor_id){
     const chatroomRef = collection(db,`chat_rooms/${chatroom}/messages`)
     const q = query(chatroomRef, orderBy("timestamp","asc"));
 
-    onSnapshot(q, (snapshot)=>{
+    onSnapshot(q, async (snapshot)=>{
         message_history.innerHTML = "";
+        if(snapshot.docs.length==1){
+            await addUIDtoDoctor(uid,doctor_id);
+        }
         snapshot.docs.forEach(doc => {
             console.log(doc.data().message)
             if(doc.data().senderId==uid){

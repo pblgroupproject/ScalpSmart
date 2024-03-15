@@ -139,7 +139,7 @@ const firebaseConfig = async function(){
                             setDoc(doc(db,'Users',cred.user.uid),{
                                 name:name,
                                 email:email,
-                                online:'true',
+                                online:true,
                                 role:'Patient',
                                 uid:cred.user.uid,
                                 image:"" 
