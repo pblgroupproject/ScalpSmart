@@ -117,3 +117,7 @@ def self_test_method(method):
     else:
         return redirect(url_for('main.web.user.self_test'))
     
+@user_bp.route('chat')
+def chat():
+    return render_template('User/user_chat.html')
+    

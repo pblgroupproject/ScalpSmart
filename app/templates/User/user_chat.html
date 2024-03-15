@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalp Smart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/User/user_chat.css')}}">
+</head>
+<body>
+    
+    <div class="root">
+
+        <nav class="navbar navbar-expand-lg bg-light p-2" style="display: grid; grid-template-columns: 1fr 1fr;">
+          <div><a class="navbar-brand" href="#" id="navbar-brand">Scalp Smart</a></div>
+          <div class="navbar-toggler d-md-none border-0" style="display: flex; justify-content: end;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: end;">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" aria-current="page" href="/user/home">
+                    Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/user/about">
+                    About Us
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/user/info">
+                    Info
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/user/marketplace">
+                    Market Place
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/user/self-test">
+                    Self-Test
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" style="display: inline-block;" href="/user/chat">
+                    Chat
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="display: inline-block;" href="/logout">
+                    Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    
+        <div class="gridContainer">
+          <div id="contactList" class="contactList" style="border-right: 1px solid rgba(0,0,0,0.2);">
+            <div id="chatbot" class="w-100" style="min-height: 70px; display: grid; grid-template-rows: 1fr; box-shadow: 1px 1px 2px rgba(0,0,0,0.5); cursor: pointer;">
+              <div style="display: grid; grid-template-columns: 2fr 5fr;">
+                <div style="aspect-ratio: 1; position: relative;">
+                  <div class="iconDiv border border-black w-75 h-75 rounded-circle" style="position: absolute;top:50%; left:50%; transform: translate(-50%,-50%);">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/007/225/199/small/robot-chat-bot-concept-illustration-vector.jpg" alt="">
+                  </div>
+                </div>
+                <div style="position: relative;">
+                  <div class="chatbot-title">Chatbot</div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="mt-5 mb-5 text-black font-monospace text-center text-decoration-underline" style="font-size: 1.5rem; text-underline-offset: 3px;">Connect with Doctors</div>
+    
+            <!-- <div class="w-100" style="min-height: 70px; display: grid; grid-template-rows: 1fr; box-shadow: 1px 1px 2px rgba(0,0,0,0.5); cursor: pointer; overflow: hidden;">
+              <div style="display: grid; grid-template-columns: 2fr 5fr; overflow: hidden;">
+                <div style="aspect-ratio: 1; position: relative; overflow: hidden;">
+                  <div class="iconDiv border border-black w-75 h-75 rounded-circle" style="position: absolute;top:50%; left:50%; transform: translate(-50%,-50%);">
+                    <img src="https://st4.depositphotos.com/7877830/25337/v/450/depositphotos_253374286-stock-illustration-vector-illustration-male-doctor-avatar.jpg">
+                  </div>
+                </div>
+                <div style="position: relative; overflow: hidden;">
+                  <div class="contact-title" style="font-size: 1.2rem; text-align: start; overflow: hidden">
+                    Dr. Vivek Singh
+                    <div style="font-weight: 300; font-size: 0.7em; overflow: auto;">
+                      <p style="display: block; overflow: auto;">
+                        Experience: 10 Years
+                        <br>
+                        Location: Warje, Pune.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+    
+          </div>
+          <div id="messageBox" class="messageBox" style="display:none">
+            <div class="message-title">
+              <div class="position-relative overflow-hidden">
+                <div class="profile-pic">
+                  <img id="chat-profile-pic" src="" style="display: block; margin:auto; width: 100%; height: auto;">
+                </div>
+              </div>
+              <div class="position-relative">
+                <div id="chat-name" style="font-size: 1.5rem; text-align: start; overflow: hidden; position: absolute; top:50%; width: 100%; transform: translateY(-50%); font-family: 'Poppins', sans-serif; font-weight: 600; color:white">
+                  <!-- Dr. Vivek Singh -->
+                </div>
+              </div>
+            </div>
+            <div id="message-history" class="message-history">
+              <!-- <div class="message receiver">
+                <div class="message-blob">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, deserunt illum illo fugit similique dolorem explicabo architecto odit repellendus dolore tenetur, in minus assumenda, ullam libero temporibus iure dolores et?
+                </div>
+              </div>
+              <div class="message sender">
+                <div class="message-blob">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, deserunt illum illo fugit similique dolorem explicabo architecto odit repellendus dolore tenetur, in minus assumenda, ullam libero temporibus iure dolores et?
+                </div>
+              </div>
+     -->
+              
+            </div>
+    
+            <div class="message-box" style="position: relative;">
+              <form id="messageForm">
+                <div id="addonContainer">
+                    <div class="input-group-text" style="background-color: inherit; color:black; font-weight: 500; text-align: center;"> >> </div>
+                </div>
+                <div class="messageContainer">
+                    <textarea class="form-control" id="userMessage" placeholder="Type a message" rows="3"></textarea>
+                </div>
+                <div class="sendButtonContainer">
+                    <input type="submit" id="sendMessageBtn" class="btn btn-secondary" value="Send">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    
+    </div>
+
+    <script src="{{url_for('static', filename='js/User/user_chat.js')}}" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
