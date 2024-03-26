@@ -90,11 +90,14 @@ async function sendMessageToChatbot(message){
         }
         
         const userRef = doc(db,'Users',uid);
-        let chat_bot_history = []
+        let chat_bot_history = [];
         const chatBotHistoryPromise = new Promise((resolve,reject)=>{
             getDoc(userRef)
                 .then(snap=>{
-                    chat_bot_history = snap.data()['chat_bot_history'];
+                    if(snap.data().hasOwnProperty('chat_bot_history')){
+                        chat_bot_history = snap.data()['chat_bot_history'];
+                    }
+                    console.log(snap.data()['chat_bot_history']);
                     resolve(chat_bot_history)
                 })
                 .catch(err=>{
@@ -103,6 +106,8 @@ async function sendMessageToChatbot(message){
         })
 
         await chatBotHistoryPromise;
+        console.log(newData);
+        console.log(chat_bot_history);
         chat_bot_history.push(newData);
         let update = {
             chat_bot_history : chat_bot_history
@@ -172,9 +177,11 @@ async function loadChatbotHistory(){
     const message_history = document.getElementById('message-history')
     onSnapshot(userRef, (snapshot)=>{
         message_history.innerHTML = "";
-        for(let i=0; i<snapshot.data()['chat_bot_history'].length; i++){
-            message_history.appendChild(createSenderMessage(snapshot.data()['chat_bot_history'][i].prompt));
-            message_history.appendChild(createReceiverMessage(snapshot.data()['chat_bot_history'][i].response));
+        if(snapshot.data().hasOwnProperty('chat_bot_history')){
+            for(let i=0; i<snapshot.data()['chat_bot_history'].length; i++){
+                message_history.appendChild(createSenderMessage(snapshot.data()['chat_bot_history'][i].prompt));
+                message_history.appendChild(createReceiverMessage(snapshot.data()['chat_bot_history'][i].response));
+            }
         }
         document.getElementById('message-history').scrollTop = document.getElementById('message-history').scrollHeight;
     })
@@ -243,7 +250,7 @@ async function loadChatHistory(doctor_id){
 
     onSnapshot(q, async (snapshot)=>{
         message_history.innerHTML = "";
-        if(snapshot.docs.length==1){
+        if(snapshot.exists&&snapshot.docs.length==1){
             await addUIDtoDoctor(uid,doctor_id);
         }
         snapshot.docs.forEach(doc => {
