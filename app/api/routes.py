@@ -17,6 +17,8 @@ api_bp.register_blueprint(db_bp, url_prefix="/database")
 from .database.images.routes import image_db_bp
 api_bp.register_blueprint(image_db_bp, url_prefix="/images")
 
+from .notifications.routes import notify_bp
+api_bp.register_blueprint(notify_bp, url_prefix='/notification')
 
 from .environment.routes import env_bp
 api_bp.register_blueprint(env_bp, url_prefix="/env")
