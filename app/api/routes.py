@@ -23,6 +23,9 @@ api_bp.register_blueprint(notify_bp, url_prefix='/notification')
 from .environment.routes import env_bp
 api_bp.register_blueprint(env_bp, url_prefix="/env")
 
+from .model.tf_chatbot.routes import tf_bp
+api_bp.register_blueprint(tf_bp, url_prefix="/techfiesta")
+
 @api_bp.route('/')
 def apiEndpoint():
     return 'API Endpoints'
