@@ -63,15 +63,6 @@ def predict():
     try:
         model_path = os.path.join("./app/api/model/image_model", 'version3_nanoyolo_best.pt')
         model = YOLO(model_path)
-
-        #to change the image size to 640x640
-        
-        image = Image.open(file_path)
-        resized_image = image.resize((640, 640))
-        file_path = os.path.join("./app/uploads", f"resized{user_id}.png")
-        resized_image.save(file_path)
-
-        #end
         
         results = model(file_path)
         result = results[0]
