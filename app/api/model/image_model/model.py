@@ -68,7 +68,7 @@ def predict():
         
         image = Image.open(file_path)
         resized_image = image.resize((640, 640))
-        file_path = os.path.join("./app/uploads", resized_image)
+        file_path = os.path.join("./app/uploads", f"resized{user_id}.png")
         resized_image.save(file_path)
 
         #end
