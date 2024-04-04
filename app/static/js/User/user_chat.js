@@ -18,6 +18,26 @@ import {
 
 } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
+// document.addEventListener("DOMContentLoaded", function() {
+//     const userMessage = document.getElementById('userMessage');
+
+//     userMessage.addEventListener('keydown', function(event) {
+//         if (event. key === 'Enter') { 
+//             event.preventDefault();
+//             const form =  document.getElementById('messageForm');
+//             // form.submit();
+//             event.preventDefault();
+//         }
+//     });
+// });
+
+document.getElementById('userMessage').addEventListener('keydown',(e)=>{
+    if(e.key=='Enter'&&!e.shiftKey){
+        document.getElementById('sendMessageBtn').click();
+        document.getElementById('userMessage').value = "";
+    }
+})
+
 
 let app = null;
 let auth = null;

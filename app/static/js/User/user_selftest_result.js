@@ -6,9 +6,21 @@ import {
     onAuthStateChanged,
 
 } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"
+import { 
+    getFirestore, collection, 
+    getDocs, 
+    addDoc, 
+    doc, deleteDoc, 
+    onSnapshot,
+    query, where,
+    orderBy, limit,
+    serverTimestamp, Timestamp,
+    getDoc, updateDoc,
 
+} from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
-
+let db = null;
+let uid = null;
 document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById('loading-wrapper').style.display = 'block';
@@ -28,11 +40,13 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(firebaseConfig => {
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        db = getFirestore(app);
         return new Promise((resolve, reject) => {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     console.log("User Signed In :", user);
                     console.log("User ID: ", user.uid);
+                    uid = user.uid;
                     resolve(user.uid);
                 } else {
                     console.log("No User Logged In: ", user);
@@ -92,6 +106,59 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('resultInfo').innerHTML = resultInfo;
 
     })
+    .then(async ()=>{
+        if(db&&uid){
+            const userRef = doc(db,'Users',uid);
+            let form_data = {};
+            const formHistoryPromise = new Promise((resolve,reject)=>{
+                getDoc(userRef)
+                    .then(snap=>{
+                        if(snap.data().hasOwnProperty('form_data')){
+                            form_data = snap.data()['form_data'];
+                        }
+                        resolve(form_data)
+                    })
+                    .catch(err=>{
+                        reject(new Error(err));
+                    })
+            })
+
+            await formHistoryPromise;
+
+            let flag = false;
+
+            for(let property in form_data){
+                if(property=='dieting'&&form_data[property]=='Yes'){
+                    document.getElementById('dieting').style.display = 'block';
+                    flag = true;
+                }
+                if(property=='flaking'&&form_data[property]=='Yes'){
+                    document.getElementById('flaking').style.display = 'block';
+                    flag = true;
+                }
+                if(property=='stress'&&form_data[property]=='Yes'){
+                    document.getElementById('stress').style.display = 'block';
+                    flag = true;
+                }
+                if(property=='iron deficiency'&&form_data[property]=='Yes'){
+                    document.getElementById('ironDeficiency').style.display = 'block';
+                    flag = true;
+                }
+                if(property=='rash'&&form_data[property]=='Yes'){
+                    document.getElementById('rash').style.display = 'block';
+                    flag = true;
+                }
+                if(property=='heredity'&&form_data[property]=='Yes'){
+                    document.getElementById('heredity').style.display = 'block';
+                    flag = true;
+                }
+            }
+            console.log(flag);
+            if(!flag){
+                document.getElementById('reasonsDiv').style.display = 'none';
+            }
+        }
+    })
     .catch(err => {
         console.log('Error', err);
         alert(`Error: ${err}`);
@@ -109,7 +176,7 @@ document.getElementById('historyBtn').addEventListener('click',function(){
     window.location.href = '/user/self-test/history';
 })
 document.getElementById('productsBtn').addEventListener('click',function(){
-    window.location.href = '/user/marketplace';
+    window.location.href = '/user/self-test/form';
 })
 document.getElementById('consultBtn').addEventListener('click',function(){
     window.location.href = '/user/chat';

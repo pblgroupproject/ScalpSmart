@@ -175,6 +175,30 @@ nav{
   -o-animation: loader 2s linear infinite;
 }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.card h2 {
+  color: #333;
+}
+
+.card p {
+  color: #666;
+}
+
 @keyframes loaders {
   0% {
     -webkit-transform: rotate(0deg);
@@ -237,7 +261,7 @@ nav{
     /* border:1px solid black; */
     height: 15vh;
     position: relative;
-    background-color:#0cb8b6;
+    background-color:#0b60b0;
     background-image:url('https://medicare.bold-themes.com/clinic/wp-content/uploads/sites/2/2015/12/bgn-grad.png');
 
 }

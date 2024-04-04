@@ -1,6 +1,3 @@
-console.log("Hello World")
-
-
 document.getElementById('uploadCard').addEventListener('mouseover',function(){
     document.getElementById('uploadImageSVG').setAttribute('fill','#FFFFFF')
 })

@@ -114,6 +114,8 @@ def self_test_method(method):
         return render_template('User/user_selftest_result.html')
     elif method == 'history':
         return render_template('User/user_selftest_history.html')
+    elif method == 'form':
+        return render_template('User/user_selftest_form.html')
     else:
         return redirect(url_for('main.web.user.self_test'))
     
